@@ -18,22 +18,24 @@ namespace SampleDatabaseWalkthrough
             InitializeComponent();
         }
 
-          public void buttin1_Click(object sender, EventArgs e)
+        private void btnOpenFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog(); 
+            OpenFileDialog open = new OpenFileDialog();
             // image filters
-            open.Filter = "Image Files(*.dcm)|*.dcm"; 
+            open.Filter = "Image Files(*.dcm)|*.dcm";
             if (open.ShowDialog() == DialogResult.OK)
             {
-              // display image in picture box
-                pictureBox1.Image = new Bitmap(open.FileName);
-              // image file path
-               textBox1.Text = open.FileName;
+                try
+                {
+
+                    // display image in picture box
+                    pictureBox1.Image = Image.FromFile(open.FileName);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
         }
-
-       
-
-          
     }
 }
