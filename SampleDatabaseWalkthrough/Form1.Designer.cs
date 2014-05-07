@@ -34,7 +34,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(234, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(270, 292);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -60,13 +60,14 @@
             this.pictureBox2.Location = new System.Drawing.Point(521, 14);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(271, 289);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 25);
+            this.label1.Location = new System.Drawing.Point(231, 307);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 2;
@@ -104,13 +105,6 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = " suma kwadratów różnic";
             this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(234, 313);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(558, 100);
-            this.panel1.TabIndex = 7;
             // 
             // label2
             // 
@@ -178,9 +172,9 @@
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(14, 42);
+            this.btnOpenFile.Location = new System.Drawing.Point(234, 323);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(186, 23);
+            this.btnOpenFile.Size = new System.Drawing.Size(270, 23);
             this.btnOpenFile.TabIndex = 9;
             this.btnOpenFile.Text = "Otwórz plik";
             this.btnOpenFile.UseVisualStyleBackColor = true;
@@ -190,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 436);
+            this.ClientSize = new System.Drawing.Size(846, 530);
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.radioButton7);
             this.Controls.Add(this.radioButton6);
@@ -198,7 +192,6 @@
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -222,7 +215,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBox2;

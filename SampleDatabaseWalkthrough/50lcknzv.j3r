@@ -28,15 +28,23 @@ namespace SampleDatabaseWalkthrough
             //open.Filter = "Image Files(*.dcm)|*.dcm";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                using (Image<Bgr, Byte> image = new Image<Bgr, byte>(open.FileName))
+                try
                 {
-                    using (Image<Gray, byte> gray = image.Convert<Gray, byte>())
+                    using(Image<Bgr, Byte> image = new Image<Bgr, byte>(open.FileName))
                     {
-                        using (var gray2 = gray.Rotate(30, new Gray(256)))
+                        using (Image<Gray, byte> gray = image.Convert<Gray, byte>())
                         {
-                            pictureBox1.Image = gray2.ToBitmap();
+                            using (var gray2 = gray.Rotate(30, new Gray(256)))
+                            {
+                                pictureBox1.Image = gray2.ToBitmap();
+                            }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
                 }
             }
         }
