@@ -16,29 +16,22 @@ namespace SampleDatabaseWalkthrough
 {
     public partial class Form1 : Form
     {
+        private PictureView pictureView1;
+
+        private PictureView pictureView2;
+
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void btnOpenFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            // image filters
-            //open.Filter = "Image Files(*.dcm)|*.dcm";
-            if (open.ShowDialog() == DialogResult.OK)
-            {
-                using (Image<Bgr, Byte> image = new Image<Bgr, byte>(open.FileName))
-                {
-                    using (Image<Gray, byte> gray = image.Convert<Gray, byte>())
-                    {
-                        using (var gray2 = gray.Rotate(30, new Gray(256)))
-                        {
-                            pictureBox1.Image = gray2.ToBitmap();
-                        }
-                    }
-                }
-            }
+            pictureView1 = new PictureView();
+            pictureView1.Dock = DockStyle.Fill;
+
+            panelPictureView1.Controls.Add(pictureView1);
+
+            pictureView2 = new PictureView();
+            pictureView2.Dock = DockStyle.Fill;
+            panelPictureView2.Controls.Add(pictureView2);
         }
     }
 }
