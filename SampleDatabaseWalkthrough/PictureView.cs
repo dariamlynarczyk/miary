@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace SampleDatabaseWalkthrough
 {
@@ -56,6 +58,27 @@ namespace SampleDatabaseWalkthrough
         {
             using (OpenFileDialog open = new OpenFileDialog())
             {
+                foreach (string el in files_in_folder)
+                {
+                    bool isDicomFile = false;
+                    using (FileStream fs = new FileStream(el, FileMode.Open))
+                    {
+                        byte[] b = new byte[4];
+                        fs.Read(b, 128, b.Length);
+                        ASCIIEncoding enc = new ASCIIEncoding();
+                        string verification = enc.GetString(b);
+                        if (verification == "DICM")
+                            isDicomFile = true;
+                        fs.Close();
+                    }
+                    if (isDicomFile)
+                        listView1.Items.Add(new ListViewItem(el));
+                    // I would discourage the use of this else, since even
+                    // if only one file in the list fails, the TextBox.Text
+                    // will still be set to "This is not a DICOM file".
+                    else
+                        textBox1.Text = "This is not a DICOM file";
+                }
                 // image filters
                 //open.Filter = "Image Files(*.dcm)|*.dcm";
                 if (open.ShowDialog() == DialogResult.OK)
@@ -91,6 +114,16 @@ namespace SampleDatabaseWalkthrough
         {
             double scale = Convert.ToDouble(cmbScale.SelectedItem);
             Image = Image.Resize(scale, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
+        }
+        private byte[] ImageToByteArray(Image img)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
+        }
+        private Image ByteArrayToImage(byte[] byteArray)
+        {
+            ImageConverter converter = new ImageConverter();
+            return (Image)converter.ConvertFrom(byteArray);
         }
     }
 }
