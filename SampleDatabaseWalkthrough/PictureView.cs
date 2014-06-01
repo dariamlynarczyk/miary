@@ -10,6 +10,9 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using System.IO;
 using System.Drawing.Imaging;
+using EvilDICOM.Core.IO.Reading;
+using EvilDICOM.Core.Helpers;
+using EvilDICOM.Core.Element;
 
 namespace SampleDatabaseWalkthrough
 {
@@ -58,34 +61,55 @@ namespace SampleDatabaseWalkthrough
         {
             using (OpenFileDialog open = new OpenFileDialog())
             {
-                foreach (string el in files_in_folder)
-                {
-                    bool isDicomFile = false;
-                    using (FileStream fs = new FileStream(el, FileMode.Open))
-                    {
-                        byte[] b = new byte[4];
-                        fs.Read(b, 128, b.Length);
-                        ASCIIEncoding enc = new ASCIIEncoding();
-                        string verification = enc.GetString(b);
-                        if (verification == "DICM")
-                            isDicomFile = true;
-                        fs.Close();
-                    }
-                    if (isDicomFile)
-                        listView1.Items.Add(new ListViewItem(el));
-                    // I would discourage the use of this else, since even
-                    // if only one file in the list fails, the TextBox.Text
-                    // will still be set to "This is not a DICOM file".
-                    else
-                        textBox1.Text = "This is not a DICOM file";
-                }
                 // image filters
-                //open.Filter = "Image Files(*.dcm)|*.dcm";
+                open.Filter = "Image Files(*.dcm)|*.dcm";
                 if (open.ShowDialog() == DialogResult.OK)
                 {
-                    using (Image<Bgr, Byte> image = new Image<Bgr, byte>(open.FileName))
+                    var dicomData = DICOMFileReader.Read(open.FileName);
+
+                    ushort height = ((UnsignedShort)dicomData.FindFirst(TagHelper.ROWS)).Data;
+                    ushort width = ((UnsignedShort)dicomData.FindFirst(TagHelper.COLUMNS)).Data;
+
+                    var interp = ((CodeString)dicomData.FindFirst(TagHelper.PHOTOMETRIC_INTERPRETATION)).Data;
+
+                    if (interp == "MONOCHROME2")
                     {
-                        Image = image.Convert<Gray, byte>();
+                        var image = new Image<Gray, byte>(width, height);
+
+                        const int bytesPerPixel = 2;
+
+                        using (var memstream = new MemoryStream())
+                        {
+                            dicomData.PixelStream.CopyTo(memstream);
+                            memstream.Position = 0;
+
+                            byte[] buffer = new byte[width * bytesPerPixel];
+
+                            for (int y = 0; y < height; y++)
+                            {
+                                memstream.Read(buffer, 0, width * bytesPerPixel);
+
+                                for (int x = 0; x < width; x++)
+                                {
+                                    var pixel = image[y, x];
+
+                                    double intensity = 0;
+
+                                    for (int i = 0; i < bytesPerPixel; i++)
+                                    {
+                                        int offset = bytesPerPixel - i - 1;
+                                        intensity = intensity * 256 + buffer[x * bytesPerPixel + offset];
+                                    }
+
+                                    intensity = intensity / 8;
+
+                                    pixel.Intensity = intensity;
+                                    image[y, x] = pixel;
+                                }
+                            }
+                        }
+
+                        Image = image;
                     }
                 }
             }

@@ -35,6 +35,7 @@ namespace SampleDatabaseWalkthrough
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                var imageAsByteS1 = PictureView.ImageToByteArray(pictureView1.Image);
@@ -83,7 +84,8 @@ namespace SampleDatabaseWalkthrough
                 MessageBox.Show("Wyjątek: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
- 
+             */
+        }
 
        
     }

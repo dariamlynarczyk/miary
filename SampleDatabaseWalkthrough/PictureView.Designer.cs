@@ -32,26 +32,25 @@
             this.btnOpenFromFile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnTranslate = new System.Windows.Forms.Button();
             this.btnDenoise = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRotate = new System.Windows.Forms.Button();
-            this.nudAngle = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.nudAngle = new System.Windows.Forms.NumericUpDown();
+            this.btnRotate = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnScale = new System.Windows.Forms.Button();
+            this.cmbScale = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbScale = new System.Windows.Forms.ComboBox();
-            this.btnScale = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDatabaseDataSet1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAngle)).BeginInit();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // sampleDatabaseDataSet1
@@ -63,7 +62,7 @@
             // 
             this.btnOpenFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFromFile.Location = new System.Drawing.Point(4, 302);
+            this.btnOpenFromFile.Location = new System.Drawing.Point(4, 332);
             this.btnOpenFromFile.Name = "btnOpenFromFile";
             this.btnOpenFromFile.Size = new System.Drawing.Size(791, 23);
             this.btnOpenFromFile.TabIndex = 1;
@@ -101,18 +100,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 107);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(6, 332);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(786, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Zapisz do pliku";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // btnTranslate
             // 
             this.btnTranslate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -146,17 +133,14 @@
             this.panel1.Size = new System.Drawing.Size(191, 101);
             this.panel1.TabIndex = 4;
             // 
-            // btnRotate
+            // label2
             // 
-            this.btnRotate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRotate.Location = new System.Drawing.Point(3, 53);
-            this.btnRotate.Name = "btnRotate";
-            this.btnRotate.Size = new System.Drawing.Size(185, 23);
-            this.btnRotate.TabIndex = 0;
-            this.btnRotate.Text = "Obróć";
-            this.btnRotate.UseVisualStyleBackColor = true;
-            this.btnRotate.Click += new System.EventHandler(this.btnRotate_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Kąt obrotu";
             // 
             // nudAngle
             // 
@@ -182,35 +166,17 @@
             this.nudAngle.Size = new System.Drawing.Size(184, 20);
             this.nudAngle.TabIndex = 1;
             // 
-            // label2
+            // btnRotate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Kąt obrotu";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRotate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.pictureBox);
-            this.panel2.Location = new System.Drawing.Point(4, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(785, 293);
-            this.panel2.TabIndex = 5;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Location = new System.Drawing.Point(-1, 0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
+            this.btnRotate.Location = new System.Drawing.Point(3, 53);
+            this.btnRotate.Name = "btnRotate";
+            this.btnRotate.Size = new System.Drawing.Size(185, 23);
+            this.btnRotate.TabIndex = 0;
+            this.btnRotate.Text = "Obróć";
+            this.btnRotate.UseVisualStyleBackColor = true;
+            this.btnRotate.Click += new System.EventHandler(this.btnRotate_Click);
             // 
             // panel3
             // 
@@ -222,26 +188,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(191, 101);
             this.panel3.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Skala";
-            // 
-            // cmbScale
-            // 
-            this.cmbScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbScale.FormattingEnabled = true;
-            this.cmbScale.Location = new System.Drawing.Point(6, 26);
-            this.cmbScale.Name = "cmbScale";
-            this.cmbScale.Size = new System.Drawing.Size(182, 21);
-            this.cmbScale.TabIndex = 1;
             // 
             // btnScale
             // 
@@ -255,13 +201,53 @@
             this.btnScale.UseVisualStyleBackColor = true;
             this.btnScale.Click += new System.EventHandler(this.btnScale_Click);
             // 
+            // cmbScale
+            // 
+            this.cmbScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbScale.FormattingEnabled = true;
+            this.cmbScale.Location = new System.Drawing.Point(6, 26);
+            this.cmbScale.Name = "cmbScale";
+            this.cmbScale.Size = new System.Drawing.Size(182, 21);
+            this.cmbScale.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Skala";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.pictureBox);
+            this.panel2.Location = new System.Drawing.Point(4, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(785, 323);
+            this.panel2.TabIndex = 5;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(-1, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
+            // 
             // PictureView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOpenFromFile);
@@ -272,11 +258,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAngle)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,7 +274,6 @@
         private System.Windows.Forms.Button btnOpenFromFile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnTranslate;
         private System.Windows.Forms.Button btnDenoise;
         private System.Windows.Forms.Panel panel1;
