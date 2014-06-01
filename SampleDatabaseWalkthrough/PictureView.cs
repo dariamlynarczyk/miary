@@ -115,19 +115,6 @@ namespace SampleDatabaseWalkthrough
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            using(SaveFileDialog save = new SaveFileDialog())
-            {
-                // image filters
-                //save.Filter = "Image Files(*.dcm)|*.dcm";
-                if (save.ShowDialog() == DialogResult.OK)
-                {
-                    Image.Save(save.FileName);
-                }
-            }
-        }
-
         private void btnRotate_Click(object sender, EventArgs e)
         {
             double angle = (double)nudAngle.Value;
