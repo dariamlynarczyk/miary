@@ -106,14 +106,15 @@ namespace SampleDatabaseWalkthrough
                                         intensity = intensity * 256 + buffer[x * bytesPerPixel + offset];
                                     }
 
-                                    intensity = intensity / 8;
+                                    intensity = intensity / 16;
 
                                     pixel.Intensity = intensity;
                                     image[y, x] = pixel;
                                 }
                             }
                         }
-
+                        // Ta metoda wyrównuje poziomy szarości
+                        image._EqualizeHist();
                         Image = image;
                     }
                 }
