@@ -142,12 +142,13 @@ namespace SampleDatabaseWalkthrough
             int x = left;
             int y = top;
             int width = Image.Width - left - right;
-            // Da się zrobić obcięcie za dużo - zabepzieczenie
-            width = width > 0 ? width : 1;
-
             int height = Image.Height - top - bottom;
-            // Da się zrobić obcięcie za dużo - zabepzieczenie
-            height = height > 0 ? height : 1;
+            
+            if (width < 1 || height < 1)
+            {
+                MessageBox.Show("Obraz nie może być przycięty");
+                return;
+            }
 
             Rectangle rect = new Rectangle(x, y, width, height);
             Image = Image.Copy(rect);
