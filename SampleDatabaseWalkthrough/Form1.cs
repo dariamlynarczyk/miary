@@ -34,60 +34,6 @@ namespace SampleDatabaseWalkthrough
             panelPictureView2.Controls.Add(pictureView2);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*
-            try
-            {
-               var imageAsByteS1 = PictureView.ImageToByteArray(pictureView1.Image);
-               var imageAsByteS2 = PictureView.ImageToByteArray(pictureView2.Image);
-                
-                   
-                    using (NpgsqlCommand cmd = new NpgsqlCommand(""))
-                    {
-                        cmd.CommandText = @"INSERT INTO tbl_images (nazwa, obraz)
-                                    VALUES (@nazwa, @obraz)";
-
-                        cmd.Parameters.AddWithValue("@nazwa", "obraz_1");
-                        cmd.Parameters.AddWithValue("@obraz", imageAsBytes1);
-                        cmd.Parameters.AddWithValue("@obraz", imageAsBytes2);
-
-                       
-                    }
-                imageAsByteS1 = Image.Resize(scale, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
-                imageAsByteS2 = Image.Resize(scale, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
-            }
-
-            float[] R(int[] imageAsBytes)
-            { 
-                float[] sum = new float[imageAsBytes.length];
-                for (j=0;j<imageAsBytes.length;j++)
-                {
-                     sum[j] = 0;
-                    for (int i=0; i<N-t[j]; i++)
-                 {
-                   sum[j] += (x[i]-M)*(x[i+t[j]]-M);
-                 }
-                 }
-             return sum;
-           }
-        for(int i=0; i<imageAsBytesS1.Length; i++)
-                {
-                   int korelacja_krzyzowa =0;
-                       sum[i,j]=0;
-                for(int j=0; j<imageAsBytes2.Length; j++)
-                    {
-                        korelacja_krzyzowa += (sum[i,j](imageAsBytes1[i,j]* imageAsBytes2[i,j])/Math.Sqrt(((sum(imageAsBytes1[i,j])^2) *sum(imageAsBytes2[i,j])^2)) 
-                    }
-                }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Wyjątek: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-             */
-        }
-
         private Tuple<Image<Gray, byte>, Image<Gray, byte>> Normalize(Image<Gray, byte> left, Image<Gray, byte> right)
         {
             int width = Math.Max(left.Width, right.Width);
@@ -97,6 +43,21 @@ namespace SampleDatabaseWalkthrough
             Image<Gray, byte> result2 = right.Resize(width, height, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
 
             return new Tuple<Image<Gray, byte>, Image<Gray, byte>>(result1, result2);
+        }
+
+        private void btnCrossCorrelation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMutualInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSquareDiff_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

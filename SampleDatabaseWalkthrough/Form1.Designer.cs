@@ -32,9 +32,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSquareDiff = new System.Windows.Forms.Button();
+            this.btnMutualInfo = new System.Windows.Forms.Button();
+            this.btnCrossCorrelation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelPictureView1 = new System.Windows.Forms.Panel();
             this.panelPictureView2 = new System.Windows.Forms.Panel();
@@ -69,9 +69,9 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSquareDiff);
+            this.panel1.Controls.Add(this.btnMutualInfo);
+            this.panel1.Controls.Add(this.btnCrossCorrelation);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 409);
@@ -88,33 +88,35 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Tutaj będzie wynik";
             // 
-            // button3
+            // btnSquareDiff
             // 
-            this.button3.Location = new System.Drawing.Point(417, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Suma kwadratów różnic";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSquareDiff.Location = new System.Drawing.Point(417, 21);
+            this.btnSquareDiff.Name = "btnSquareDiff";
+            this.btnSquareDiff.Size = new System.Drawing.Size(200, 23);
+            this.btnSquareDiff.TabIndex = 3;
+            this.btnSquareDiff.Text = "Suma kwadratów różnic";
+            this.btnSquareDiff.UseVisualStyleBackColor = true;
+            this.btnSquareDiff.Click += new System.EventHandler(this.btnSquareDiff_Click);
             // 
-            // button2
+            // btnMutualInfo
             // 
-            this.button2.Location = new System.Drawing.Point(211, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Mutual information";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnMutualInfo.Location = new System.Drawing.Point(211, 21);
+            this.btnMutualInfo.Name = "btnMutualInfo";
+            this.btnMutualInfo.Size = new System.Drawing.Size(200, 23);
+            this.btnMutualInfo.TabIndex = 2;
+            this.btnMutualInfo.Text = "Mutual information";
+            this.btnMutualInfo.UseVisualStyleBackColor = true;
+            this.btnMutualInfo.Click += new System.EventHandler(this.btnMutualInfo_Click);
             // 
-            // button1
+            // btnCrossCorrelation
             // 
-            this.button1.Location = new System.Drawing.Point(7, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Cross-correlation";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCrossCorrelation.Location = new System.Drawing.Point(7, 21);
+            this.btnCrossCorrelation.Name = "btnCrossCorrelation";
+            this.btnCrossCorrelation.Size = new System.Drawing.Size(197, 23);
+            this.btnCrossCorrelation.TabIndex = 1;
+            this.btnCrossCorrelation.Text = "Cross-correlation";
+            this.btnCrossCorrelation.UseVisualStyleBackColor = true;
+            this.btnCrossCorrelation.Click += new System.EventHandler(this.btnCrossCorrelation_Click);
             // 
             // label1
             // 
@@ -162,9 +164,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSquareDiff;
+        private System.Windows.Forms.Button btnMutualInfo;
+        private System.Windows.Forms.Button btnCrossCorrelation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelPictureView1;
         private System.Windows.Forms.Panel panelPictureView2;
