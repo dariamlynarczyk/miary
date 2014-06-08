@@ -152,5 +152,28 @@ namespace SampleDatabaseWalkthrough
             Rectangle rect = new Rectangle(x, y, width, height);
             Image = Image.Copy(rect);
         }
+
+        private void btnDenoise_Click(object sender, EventArgs e)
+        {
+            // Dla obrazów dla których wysokość lub szerokość <= 3 nie robię nic
+            if (Image.Width <= 3 || Image.Height <= 3)
+            {
+                return;
+            }
+
+            int windowSize;
+            // Dla małych obrazów wykorzystuję okno mniejsze od połowy mniejszego wymiaru
+            if (Image.Width <= 10 || Image.Height <= 10)
+            {
+                windowSize = Math.Min(Image.Width, Image.Height) / 2;
+            }
+            else
+            {
+                windowSize = 5;
+            }
+
+            //Image = Image.SmoothMedian(windowSize);
+            Image = Image.SmoothBlur(windowSize, windowSize);
+        }
     }
 }

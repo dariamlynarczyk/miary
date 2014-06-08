@@ -124,6 +124,7 @@
             this.btnDenoise.TabIndex = 3;
             this.btnDenoise.Text = "Odszumianie";
             this.btnDenoise.UseVisualStyleBackColor = true;
+            this.btnDenoise.Click += new System.EventHandler(this.btnDenoise_Click);
             // 
             // panel1
             // 
