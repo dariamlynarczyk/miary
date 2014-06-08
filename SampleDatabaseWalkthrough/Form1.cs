@@ -33,6 +33,7 @@ namespace SampleDatabaseWalkthrough
             pictureView2.Dock = DockStyle.Fill;
             panelPictureView2.Controls.Add(pictureView2);
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             /*
@@ -87,6 +88,15 @@ namespace SampleDatabaseWalkthrough
              */
         }
 
-       
+        private Tuple<Image<Gray, byte>, Image<Gray, byte>> Normalize(Image<Gray, byte> left, Image<Gray, byte> right)
+        {
+            int width = Math.Max(left.Width, right.Width);
+            int height = Math.Max(left.Height, right.Height);
+
+            Image<Gray, byte> result1 = left.Resize(width, height, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
+            Image<Gray, byte> result2 = right.Resize(width, height, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
+
+            return new Tuple<Image<Gray, byte>, Image<Gray, byte>>(result1, result2);
+        }
     }
 }
