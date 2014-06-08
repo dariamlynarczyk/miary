@@ -40,8 +40,24 @@ namespace SampleDatabaseWalkthrough
 
         private double ComputeCrossCorrelation(double[,] left, double[,] right, int maskSize)
         {
+            double sum = 0;
+            double sumOfLeftSquares = 0;
+            double sumOfRightSquares = 0;
 
-            return 0;
+            for (int x = 0; x < maskSize; x++)
+            {
+                for (int y = 0; y < maskSize; y++)
+                {
+                    sum += left[x, y] * right[x, y];
+                    sumOfLeftSquares += Math.Pow(left[x, y], 2);
+                    sumOfRightSquares += Math.Pow(right[x, y], 2);
+                }
+            }
+            
+            double result = sum / Math.Sqrt(sumOfLeftSquares * sumOfRightSquares);
+            // mnożymy przez 256 bo result jest od 0 do 1
+
+            return result * 256;
         }
 
         private void btnMutualInfo_Click(object sender, EventArgs e)
@@ -73,7 +89,7 @@ namespace SampleDatabaseWalkthrough
 
             sum = sum / (maskSize * maskSize);
 
-            return sum;
+            return sum / 256;
         }
 
         private void DisplayMeasure(Func<double[,], double[,], int, double> measure)
@@ -122,7 +138,6 @@ namespace SampleDatabaseWalkthrough
                     }
                 }
 
-                result._EqualizeHist();
                 pbResult.Image = result.ToBitmap();
             }
             image1.Dispose();
