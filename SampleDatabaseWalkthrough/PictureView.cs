@@ -45,6 +45,11 @@ namespace SampleDatabaseWalkthrough
                 image = value;
                 pictureBox.Image = image.ToBitmap();
 
+                // Ustawienie kontrolek do przycinania
+                nudCropLeft.Value = nudCropRight.Value = nudCropTop.Value = nudCropBottom.Value = 0;
+                nudCropLeft.Maximum = nudCropRight.Maximum = image.Width;
+                nudCropTop.Maximum = nudCropBottom.Maximum = image.Height;
+
                 if (oldImage != null)
                 {
                     oldImage.Dispose();
@@ -135,6 +140,27 @@ namespace SampleDatabaseWalkthrough
         {
             ImageConverter converter = new ImageConverter();
             return (Image)converter.ConvertFrom(byteArray);
+        }
+
+        private void btnCrop_Click(object sender, EventArgs e)
+        {
+            int left = Convert.ToInt32(nudCropLeft.Value);
+            int right = Convert.ToInt32(nudCropRight.Value);
+            int top = Convert.ToInt32(nudCropTop.Value);
+            int bottom = Convert.ToInt32(nudCropBottom.Value);
+
+            int x = left;
+            int y = top;
+            int width = Image.Width - left - right;
+            // Da się zrobić obcięcie za dużo - zabepzieczenie
+            width = width > 0 ? width : 1;
+
+            int height = Image.Height - top - bottom;
+            // Da się zrobić obcięcie za dużo - zabepzieczenie
+            height = height > 0 ? height : 1;
+
+            Rectangle rect = new Rectangle(x, y, width, height);
+            Image = Image.Copy(rect);
         }
     }
 }
