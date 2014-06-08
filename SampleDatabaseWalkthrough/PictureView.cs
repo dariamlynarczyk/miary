@@ -131,17 +131,7 @@ namespace SampleDatabaseWalkthrough
             double scale = Convert.ToDouble(cmbScale.SelectedItem);
             Image = Image.Resize(scale, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
         }
-        private byte[] ImageToByteArray(Image img)
-        {
-            ImageConverter converter = new ImageConverter();
-            return (byte[])converter.ConvertTo(img, typeof(byte[]));
-        }
-        private Image ByteArrayToImage(byte[] byteArray)
-        {
-            ImageConverter converter = new ImageConverter();
-            return (Image)converter.ConvertFrom(byteArray);
-        }
-
+        
         private void btnCrop_Click(object sender, EventArgs e)
         {
             int left = Convert.ToInt32(nudCropLeft.Value);
