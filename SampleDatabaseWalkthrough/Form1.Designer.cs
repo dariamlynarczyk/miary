@@ -37,12 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelPictureView1 = new System.Windows.Forms.Panel();
             this.panelPictureView2 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pbResult = new System.Windows.Forms.PictureBox();
+            this.lblResult = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -63,23 +60,23 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(822, 506);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.lblResult);
             this.panel1.Controls.Add(this.btnSquareDiff);
             this.panel1.Controls.Add(this.btnMutualInfo);
             this.panel1.Controls.Add(this.btnCrossCorrelation);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 357);
+            this.panel1.Location = new System.Drawing.Point(3, 409);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(816, 146);
+            this.panel1.Size = new System.Drawing.Size(816, 94);
             this.panel1.TabIndex = 0;
             // 
             // btnSquareDiff
@@ -126,7 +123,7 @@
             this.panelPictureView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPictureView1.Location = new System.Drawing.Point(3, 3);
             this.panelPictureView1.Name = "panelPictureView1";
-            this.panelPictureView1.Size = new System.Drawing.Size(405, 348);
+            this.panelPictureView1.Size = new System.Drawing.Size(405, 400);
             this.panelPictureView1.TabIndex = 1;
             // 
             // panelPictureView2
@@ -134,29 +131,17 @@
             this.panelPictureView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPictureView2.Location = new System.Drawing.Point(414, 3);
             this.panelPictureView2.Name = "panelPictureView2";
-            this.panelPictureView2.Size = new System.Drawing.Size(405, 348);
+            this.panelPictureView2.Size = new System.Drawing.Size(405, 400);
             this.panelPictureView2.TabIndex = 2;
             // 
-            // panel2
+            // lblResult
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.pbResult);
-            this.panel2.Location = new System.Drawing.Point(7, 51);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(806, 92);
-            this.panel2.TabIndex = 4;
-            // 
-            // pbResult
-            // 
-            this.pbResult.Location = new System.Drawing.Point(4, 4);
-            this.pbResult.Name = "pbResult";
-            this.pbResult.Size = new System.Drawing.Size(245, 139);
-            this.pbResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbResult.TabIndex = 0;
-            this.pbResult.TabStop = false;
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblResult.Location = new System.Drawing.Point(7, 51);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 26);
+            this.lblResult.TabIndex = 4;
             // 
             // Form1
             // 
@@ -169,9 +154,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbResult)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,8 +169,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelPictureView1;
         private System.Windows.Forms.Panel panelPictureView2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pbResult;
+        private System.Windows.Forms.Label lblResult;
 
        // public System.EventHandler button1_Click { get;}
     }

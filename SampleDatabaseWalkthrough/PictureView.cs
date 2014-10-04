@@ -18,19 +18,19 @@ namespace SampleDatabaseWalkthrough
 {
     public partial class PictureView : UserControl
     {
-        private Image<Gray, byte> image;
+        private Image<Gray, double> image;
 
         public PictureView()
         {
             InitializeComponent();
-            Image = new Image<Gray, byte>(1, 1);
+            Image = new Image<Gray, double>(1, 1);
 
             cmbScale.Items.AddRange(new object[] { 0.1, 0.25, 0.33, 0.5, 1.0, 2.0, 3.0, 4.0, 10.0 });
 
             cmbScale.SelectedItem = 1.0;
         }
 
-        public Image<Gray, byte> Image 
+        public Image<Gray, double> Image 
         { 
             get
             {
@@ -79,7 +79,7 @@ namespace SampleDatabaseWalkthrough
 
                     if (interp == "MONOCHROME2")
                     {
-                        var image = new Image<Gray, byte>(width, height);
+                        var image = new Image<Gray, double>(width, height);
 
                         const int bytesPerPixel = 2;
 
@@ -113,8 +113,7 @@ namespace SampleDatabaseWalkthrough
                                 }
                             }
                         }
-                        // Ta metoda wyrównuje poziomy szarości
-                        image._EqualizeHist();
+
                         Image = image;
                     }
                 }

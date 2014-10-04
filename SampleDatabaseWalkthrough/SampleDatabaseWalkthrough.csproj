@@ -82,6 +82,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Measures\CrossCorrelation.cs" />
+    <Compile Include="Measures\IMeasure.cs" />
+    <Compile Include="Measures\MutualInfo.cs" />
+    <Compile Include="Measures\SquareDiff.cs" />
     <Compile Include="PictureView.cs">
       <SubType>UserControl</SubType>
     </Compile>
