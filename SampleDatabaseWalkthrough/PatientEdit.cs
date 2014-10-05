@@ -12,6 +12,9 @@ namespace SampleDatabaseWalkthrough
         {
             InitializeComponent();
             this.patient = patient;
+            tbGivenName.Text = patient.GivenName;
+            tbFamilyName.Text = patient.FamilyName;
+            dtpBirthDate.Value = patient.BirthDate;
         }
 
         private void btnOK_Click(object sender, EventArgs e)

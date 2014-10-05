@@ -166,6 +166,7 @@
             this.btnDeletePatient.TabIndex = 2;
             this.btnDeletePatient.Text = "Usuń";
             this.btnDeletePatient.UseVisualStyleBackColor = true;
+            this.btnDeletePatient.Click += new System.EventHandler(this.btnDeletePatient_Click);
             // 
             // panel2
             // 

@@ -34,25 +34,6 @@ namespace SampleDatabaseWalkthrough
             }
         }
 
-        private void dgvPatients_SelectionChanged(object sender, EventArgs e)
-        {
-            var selected = SelectedPatient;
-
-            if (selected != null)
-            {
-                lblGivenName.Text = selected.GivenName;
-                lblFamilyName.Text = selected.FamilyName;
-                lblBirthDate.Text = selected.BirthDate.ToShortDateString();
-
-                btnEditPatient.Enabled = btnDeletePatient.Enabled = true;
-            }
-            else
-            {
-                lblGivenName.Text = lblFamilyName.Text = lblBirthDate.Text = string.Empty;
-                btnEditPatient.Enabled = btnDeletePatient.Enabled = false;
-            }
-        }
-
         private void RefreshPatientList()
         {
             using (var datacontext = new PatientsEntities())
@@ -71,6 +52,51 @@ namespace SampleDatabaseWalkthrough
                                           GivenName = p.GivenName,
                                           BirthDate = p.BirthDate
                                       }).ToList();
+        }
+
+        private void RefreshNotes()
+        {
+            using (var datacontext = new PatientsEntities())
+            {
+                RefreshNotes(datacontext);
+            }
+        }
+
+        private void RefreshNotes(PatientsEntities dataContext)
+        {
+
+        }
+
+        private void RefreshPhotos()
+        {
+            using (var datacontext = new PatientsEntities())
+            {
+                RefreshPhotos(datacontext);
+            }
+        }
+
+        private void RefreshPhotos(PatientsEntities dataContext)
+        {
+
+        }
+
+        private void dgvPatients_SelectionChanged(object sender, EventArgs e)
+        {
+            var selected = SelectedPatient;
+
+            if (selected != null)
+            {
+                lblGivenName.Text = selected.GivenName;
+                lblFamilyName.Text = selected.FamilyName;
+                lblBirthDate.Text = selected.BirthDate.ToShortDateString();
+
+                btnEditPatient.Enabled = btnDeletePatient.Enabled = true;
+            }
+            else
+            {
+                lblGivenName.Text = lblFamilyName.Text = lblBirthDate.Text = string.Empty;
+                btnEditPatient.Enabled = btnDeletePatient.Enabled = false;
+            }
         }
 
         private void btnAddPatient_Click(object sender, EventArgs e)
@@ -104,16 +130,31 @@ namespace SampleDatabaseWalkthrough
                 {
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
-                        using (var datacontext = new PatientsEntities())
-                        {
-                            datacontext.Patients.Add(patient);
-                            datacontext.SaveChanges();
+                        dataContext.SaveChanges();
 
-                            RefreshPatientList(datacontext);
-                        }
+                        RefreshPatientList(dataContext);
                     }
                 }
             }
         }
+
+        private void btnDeletePatient_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy usunąć klienta?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using (var dataContext = new PatientsEntities())
+                {
+                    var selected = SelectedPatient;
+
+                    var patient = dataContext.Patients.Find(selected.Id);
+
+                    dataContext.Patients.Remove(patient);
+                    dataContext.SaveChanges();
+
+                    RefreshPatientList(dataContext);
+                }
+            }
+        }
+
     }
 }
