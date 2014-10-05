@@ -114,6 +114,12 @@
     <Compile Include="Notes.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="PatientList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PatientList.Designer.cs">
+      <DependentUpon>PatientList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
@@ -136,6 +142,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientList.resx">
+      <DependentUpon>PatientList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PictureCompare.resx">
       <DependentUpon>PictureCompare.cs</DependentUpon>

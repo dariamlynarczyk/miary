@@ -27,6 +27,11 @@ namespace SampleDatabaseWalkthrough
             Open(new PictureCompare());
         }
 
+        private void btnDatabase_Click(object sender, EventArgs e)
+        {
+            Open(new PatientList());
+        }
+
         private void Open(UserControl ctrl)
         {
             if (activectrl != null)

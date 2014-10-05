@@ -47,6 +47,7 @@
             // 
             // pnlContent
             // 
+            this.pnlContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 34);
             this.pnlContent.Name = "pnlContent";
@@ -61,6 +62,7 @@
             this.btnDatabase.TabIndex = 0;
             this.btnDatabase.Text = "Kartoteka";
             this.btnDatabase.UseVisualStyleBackColor = true;
+            this.btnDatabase.Click += new System.EventHandler(this.btnDatabase_Click);
             // 
             // btnPictureCompare
             // 
