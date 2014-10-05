@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.sampleDatabaseDataSet1 = new SampleDatabaseWalkthrough.SampleDatabaseDataSet();
-            this.btnOpenFromFile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDenoise = new System.Windows.Forms.Button();
@@ -49,10 +48,10 @@
             this.nudCropTop = new System.Windows.Forms.NumericUpDown();
             this.nudCropBottom = new System.Windows.Forms.NumericUpDown();
             this.nudCropRight = new System.Windows.Forms.NumericUpDown();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.nudCropLeft = new System.Windows.Forms.NumericUpDown();
             this.btnCrop = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.sampleDatabaseDataSet1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -62,27 +61,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCropTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).BeginInit();
             this.SuspendLayout();
             // 
             // sampleDatabaseDataSet1
             // 
             this.sampleDatabaseDataSet1.DataSetName = "SampleDatabaseDataSet";
             this.sampleDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnOpenFromFile
-            // 
-            this.btnOpenFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFromFile.Location = new System.Drawing.Point(4, 304);
-            this.btnOpenFromFile.Name = "btnOpenFromFile";
-            this.btnOpenFromFile.Size = new System.Drawing.Size(791, 23);
-            this.btnOpenFromFile.TabIndex = 1;
-            this.btnOpenFromFile.Text = "Otwórz z pliku";
-            this.btnOpenFromFile.UseVisualStyleBackColor = true;
-            this.btnOpenFromFile.Click += new System.EventHandler(this.btnOpenFromFile_Click);
             // 
             // label1
             // 
@@ -311,27 +298,6 @@
             this.nudCropRight.Size = new System.Drawing.Size(89, 20);
             this.nudCropRight.TabIndex = 6;
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.pictureBox);
-            this.panel2.Location = new System.Drawing.Point(4, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(785, 295);
-            this.panel2.TabIndex = 5;
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.Location = new System.Drawing.Point(-1, 0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
-            // 
             // nudCropLeft
             // 
             this.nudCropLeft.Location = new System.Drawing.Point(98, 73);
@@ -351,6 +317,27 @@
             this.btnCrop.UseVisualStyleBackColor = true;
             this.btnCrop.Click += new System.EventHandler(this.btnCrop_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.pictureBox);
+            this.panel2.Location = new System.Drawing.Point(4, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(785, 324);
+            this.panel2.TabIndex = 5;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(-1, 0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
+            // 
             // PictureView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,7 +346,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnOpenFromFile);
             this.Name = "PictureView";
             this.Size = new System.Drawing.Size(798, 482);
             ((System.ComponentModel.ISupportInitialize)(this.sampleDatabaseDataSet1)).EndInit();
@@ -374,10 +360,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCropTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,7 +372,6 @@
         #endregion
 
         private SampleDatabaseDataSet sampleDatabaseDataSet1;
-        private System.Windows.Forms.Button btnOpenFromFile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnDenoise;
