@@ -53,6 +53,23 @@ namespace SampleDatabaseWalkthrough
             }
         }
 
+        public SimpleDTO.PhotoDTO SelectedPhoto
+        {
+            get
+            {
+                SimpleDTO.PhotoDTO selected = null;
+
+                var selectedRow = dgvPhoto.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault();
+
+                if (selectedRow != null)
+                {
+                    selected = selectedRow.DataBoundItem as SimpleDTO.PhotoDTO;
+                }
+
+                return selected;
+            }
+        }
+
         #region Patients
 
         private void RefreshPatientList()
@@ -210,6 +227,7 @@ namespace SampleDatabaseWalkthrough
         {
             Notes note = new Notes();
             note.PatientId = SelectedPatient.Id;
+            note.CreateDate = DateTime.Now;
 
             using (var dlg = new NoteEdit(note))
             {
@@ -272,6 +290,82 @@ namespace SampleDatabaseWalkthrough
         }
 
         private void RefreshPhotos(PatientsEntities dataContext)
+        {
+            var patient = SelectedPatient;
+            if (patient != null)
+            {
+                dgvPhoto.DataSource = (from photo in dataContext.Pictures
+                                       where photo.PatientId == patient.Id
+                                       select new SimpleDTO.PhotoDTO
+                                       {
+                                           Id = photo.Id,
+                                           Summary = photo.Summary
+                                       }).ToList();
+            }
+            else
+            {
+                dgvPhoto.DataSource = Enumerable.Empty<SimpleDTO.PhotoDTO>();
+            }
+        }
+
+        private void dgvPhoto_SelectionChanged(object sender, EventArgs e)
+        {
+            var selected = SelectedPhoto;
+            if (selected != null)
+            {
+                using (var dataContext = new PatientsEntities())
+                {
+                    Pictures picture = dataContext.Pictures.Find(SelectedPhoto.Id);
+                    imgPreview.Image = ConvertHelper.Read(picture.Picture);
+                }
+                btnEditPhoto.Enabled = btnDeletePhoto.Enabled = true;
+            }
+            else
+            {
+                imgPreview.Image = null;
+                btnEditPhoto.Enabled = btnDeletePhoto.Enabled = false;
+            }
+        }
+
+        private void btnAddPhoto_Click(object sender, EventArgs e)
+        {
+            Pictures picture = new Pictures();
+            picture.PatientId = SelectedPatient.Id;
+            picture.CreateDate = DateTime.Now;
+            
+            using(var dlg = new PhotoEdit(picture))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    using (var dataContext = new PatientsEntities())
+                    {
+                        dataContext.Pictures.Add(picture);
+                        dataContext.SaveChanges();
+
+                        RefreshPhotos(dataContext);
+                    }
+                }
+            }
+        }
+
+        private void btnEditPhoto_Click(object sender, EventArgs e)
+        {
+            using (var dataContext = new PatientsEntities())
+            {
+                Pictures picture = dataContext.Pictures.Find(SelectedPhoto.Id);
+                using (var dlg = new PhotoEdit(picture))
+                {
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        dataContext.SaveChanges();
+
+                        RefreshPhotos(dataContext);
+                    }
+                }
+            }
+        }
+
+        private void btnDeletePhoto_Click(object sender, EventArgs e)
         {
 
         }

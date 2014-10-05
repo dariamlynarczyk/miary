@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
@@ -55,13 +56,16 @@
             this.btnEditNote = new System.Windows.Forms.Button();
             this.btnDeleteNote = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvPhoto = new System.Windows.Forms.DataGridView();
-            this.colPhotoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhotoSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddPhoto = new System.Windows.Forms.Button();
             this.btnEditPhoto = new System.Windows.Forms.Button();
             this.btnDeletePhoto = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgvPhoto = new System.Windows.Forms.DataGridView();
+            this.colPhotoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhotoSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.imgPreview = new Emgu.CV.UI.ImageBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -72,8 +76,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotes)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoto)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoto)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -361,7 +371,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dgvPhoto);
+            this.tabPage2.Controls.Add(this.splitContainer1);
             this.tabPage2.Controls.Add(this.flowLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -370,38 +380,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Zdjęcia";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dgvPhoto
-            // 
-            this.dgvPhoto.AllowUserToAddRows = false;
-            this.dgvPhoto.AllowUserToDeleteRows = false;
-            this.dgvPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colPhotoId,
-            this.colPhotoSummary});
-            this.dgvPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPhoto.Location = new System.Drawing.Point(3, 36);
-            this.dgvPhoto.MultiSelect = false;
-            this.dgvPhoto.Name = "dgvPhoto";
-            this.dgvPhoto.ReadOnly = true;
-            this.dgvPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPhoto.Size = new System.Drawing.Size(536, 283);
-            this.dgvPhoto.TabIndex = 1;
-            // 
-            // colPhotoId
-            // 
-            this.colPhotoId.DataPropertyName = "Id";
-            this.colPhotoId.HeaderText = "#";
-            this.colPhotoId.Name = "colPhotoId";
-            this.colPhotoId.ReadOnly = true;
-            this.colPhotoId.Width = 40;
-            // 
-            // colPhotoSummary
-            // 
-            this.colPhotoSummary.DataPropertyName = "Summary";
-            this.colPhotoSummary.HeaderText = "Podsumowanie";
-            this.colPhotoSummary.Name = "colPhotoSummary";
-            this.colPhotoSummary.ReadOnly = true;
             // 
             // flowLayoutPanel3
             // 
@@ -423,6 +401,7 @@
             this.btnAddPhoto.TabIndex = 0;
             this.btnAddPhoto.Text = "Dodaj";
             this.btnAddPhoto.UseVisualStyleBackColor = true;
+            this.btnAddPhoto.Click += new System.EventHandler(this.btnAddPhoto_Click);
             // 
             // btnEditPhoto
             // 
@@ -433,6 +412,7 @@
             this.btnEditPhoto.TabIndex = 1;
             this.btnEditPhoto.Text = "Edytuj";
             this.btnEditPhoto.UseVisualStyleBackColor = true;
+            this.btnEditPhoto.Click += new System.EventHandler(this.btnEditPhoto_Click);
             // 
             // btnDeletePhoto
             // 
@@ -443,6 +423,78 @@
             this.btnDeletePhoto.TabIndex = 2;
             this.btnDeletePhoto.Text = "Usuń";
             this.btnDeletePhoto.UseVisualStyleBackColor = true;
+            this.btnDeletePhoto.Click += new System.EventHandler(this.btnDeletePhoto_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 36);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dgvPhoto);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.panel3);
+            this.splitContainer1.Size = new System.Drawing.Size(536, 283);
+            this.splitContainer1.SplitterDistance = 305;
+            this.splitContainer1.TabIndex = 5;
+            // 
+            // dgvPhoto
+            // 
+            this.dgvPhoto.AllowUserToAddRows = false;
+            this.dgvPhoto.AllowUserToDeleteRows = false;
+            this.dgvPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colPhotoId,
+            this.colPhotoSummary});
+            this.dgvPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPhoto.Location = new System.Drawing.Point(0, 0);
+            this.dgvPhoto.MultiSelect = false;
+            this.dgvPhoto.Name = "dgvPhoto";
+            this.dgvPhoto.ReadOnly = true;
+            this.dgvPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPhoto.Size = new System.Drawing.Size(305, 283);
+            this.dgvPhoto.TabIndex = 2;
+            this.dgvPhoto.SelectionChanged += new System.EventHandler(this.dgvPhoto_SelectionChanged);
+            // 
+            // colPhotoId
+            // 
+            this.colPhotoId.DataPropertyName = "Id";
+            this.colPhotoId.HeaderText = "#";
+            this.colPhotoId.Name = "colPhotoId";
+            this.colPhotoId.ReadOnly = true;
+            this.colPhotoId.Width = 40;
+            // 
+            // colPhotoSummary
+            // 
+            this.colPhotoSummary.DataPropertyName = "Summary";
+            this.colPhotoSummary.HeaderText = "Podsumowanie";
+            this.colPhotoSummary.Name = "colPhotoSummary";
+            this.colPhotoSummary.ReadOnly = true;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.imgPreview);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(227, 283);
+            this.panel3.TabIndex = 5;
+            // 
+            // imgPreview
+            // 
+            this.imgPreview.Location = new System.Drawing.Point(0, 0);
+            this.imgPreview.Name = "imgPreview";
+            this.imgPreview.Size = new System.Drawing.Size(120, 96);
+            this.imgPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgPreview.TabIndex = 2;
+            this.imgPreview.TabStop = false;
             // 
             // PatientList
             // 
@@ -462,8 +514,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotes)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoto)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoto)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -497,12 +556,15 @@
         private System.Windows.Forms.Button btnDeleteNote;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNoteId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNoteContent;
-        private System.Windows.Forms.DataGridView dgvPhoto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPhotoId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPhotoSummary;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button btnAddPhoto;
         private System.Windows.Forms.Button btnEditPhoto;
         private System.Windows.Forms.Button btnDeletePhoto;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView dgvPhoto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhotoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhotoSummary;
+        private System.Windows.Forms.Panel panel3;
+        private Emgu.CV.UI.ImageBox imgPreview;
     }
 }

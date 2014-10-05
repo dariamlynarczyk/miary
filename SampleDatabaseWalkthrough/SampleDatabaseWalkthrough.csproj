@@ -135,6 +135,12 @@
     <Compile Include="Patients.cs">
       <DependentUpon>DataContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhotoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhotoEdit.Designer.cs">
+      <DependentUpon>PhotoEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="PictureCompare.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PatientList.resx">
       <DependentUpon>PatientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhotoEdit.resx">
+      <DependentUpon>PhotoEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PictureCompare.resx">
       <DependentUpon>PictureCompare.cs</DependentUpon>
