@@ -37,7 +37,7 @@ namespace SampleDatabaseWalkthrough
                 return image;
             }
 
-            private set
+            set
             {
                 var oldImage = image;
                 var oldBmp = pictureBox.Image;
@@ -58,64 +58,6 @@ namespace SampleDatabaseWalkthrough
                 if (oldBmp != null)
                 {
                     oldBmp.Dispose();
-                }
-            }
-        }
-
-        private void btnOpenFromFile_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog open = new OpenFileDialog())
-            {
-                // image filters
-                open.Filter = "Image Files(*.dcm)|*.dcm";
-                if (open.ShowDialog() == DialogResult.OK)
-                {
-                    var dicomData = DICOMFileReader.Read(open.FileName);
-
-                    ushort height = ((UnsignedShort)dicomData.FindFirst(TagHelper.ROWS)).Data;
-                    ushort width = ((UnsignedShort)dicomData.FindFirst(TagHelper.COLUMNS)).Data;
-
-                    var interp = ((CodeString)dicomData.FindFirst(TagHelper.PHOTOMETRIC_INTERPRETATION)).Data;
-
-                    if (interp == "MONOCHROME2")
-                    {
-                        var image = new Image<Gray, double>(width, height);
-
-                        const int bytesPerPixel = 2;
-
-                        using (var memstream = new MemoryStream())
-                        {
-                            dicomData.PixelStream.CopyTo(memstream);
-                            memstream.Position = 0;
-
-                            byte[] buffer = new byte[width * bytesPerPixel];
-
-                            for (int y = 0; y < height; y++)
-                            {
-                                memstream.Read(buffer, 0, width * bytesPerPixel);
-
-                                for (int x = 0; x < width; x++)
-                                {
-                                    var pixel = image[y, x];
-
-                                    double intensity = 0;
-
-                                    for (int i = 0; i < bytesPerPixel; i++)
-                                    {
-                                        int offset = bytesPerPixel - i - 1;
-                                        intensity = intensity * 256 + buffer[x * bytesPerPixel + offset];
-                                    }
-
-                                    intensity = intensity / 16;
-
-                                    pixel.Intensity = intensity;
-                                    image[y, x] = pixel;
-                                }
-                            }
-                        }
-
-                        Image = image;
-                    }
                 }
             }
         }

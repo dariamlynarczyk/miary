@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sampleDatabaseDataSet1 = new SampleDatabaseWalkthrough.SampleDatabaseDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDenoise = new System.Windows.Forms.Button();
@@ -52,7 +51,6 @@
             this.btnCrop = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDatabaseDataSet1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAngle)).BeginInit();
@@ -65,11 +63,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // sampleDatabaseDataSet1
-            // 
-            this.sampleDatabaseDataSet1.DataSetName = "SampleDatabaseDataSet";
-            this.sampleDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -94,11 +87,11 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 330);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 346);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 151);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 135);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // btnDenoise
@@ -121,7 +114,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(191, 145);
+            this.panel1.Size = new System.Drawing.Size(191, 129);
             this.panel1.TabIndex = 4;
             // 
             // label2
@@ -177,7 +170,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(200, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(191, 145);
+            this.panel3.Size = new System.Drawing.Size(191, 129);
             this.panel3.TabIndex = 5;
             // 
             // btnScale
@@ -235,7 +228,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 145);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 129);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // label4
@@ -348,7 +341,6 @@
             this.Controls.Add(this.label1);
             this.Name = "PictureView";
             this.Size = new System.Drawing.Size(798, 482);
-            ((System.ComponentModel.ISupportInitialize)(this.sampleDatabaseDataSet1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -371,7 +363,6 @@
 
         #endregion
 
-        private SampleDatabaseDataSet sampleDatabaseDataSet1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnDenoise;
