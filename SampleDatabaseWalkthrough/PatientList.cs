@@ -15,6 +15,8 @@ namespace SampleDatabaseWalkthrough
         {
             InitializeComponent();
             dgvPatients.AutoGenerateColumns = false;
+            dgvNotes.AutoGenerateColumns = false;
+            dgvPhoto.AutoGenerateColumns = false;
             RefreshPatientList();
         }
 
@@ -33,6 +35,25 @@ namespace SampleDatabaseWalkthrough
                 return selected;
             }
         }
+
+        public SimpleDTO.NoteDTO SelectedNote
+        {
+            get
+            {
+                SimpleDTO.NoteDTO selected = null;
+
+                var selectedRow = dgvNotes.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault();
+
+                if (selectedRow != null)
+                {
+                    selected = selectedRow.DataBoundItem as SimpleDTO.NoteDTO;
+                }
+
+                return selected;
+            }
+        }
+
+        #region Patients
 
         private void RefreshPatientList()
         {
@@ -54,32 +75,6 @@ namespace SampleDatabaseWalkthrough
                                       }).ToList();
         }
 
-        private void RefreshNotes()
-        {
-            using (var datacontext = new PatientsEntities())
-            {
-                RefreshNotes(datacontext);
-            }
-        }
-
-        private void RefreshNotes(PatientsEntities dataContext)
-        {
-
-        }
-
-        private void RefreshPhotos()
-        {
-            using (var datacontext = new PatientsEntities())
-            {
-                RefreshPhotos(datacontext);
-            }
-        }
-
-        private void RefreshPhotos(PatientsEntities dataContext)
-        {
-
-        }
-
         private void dgvPatients_SelectionChanged(object sender, EventArgs e)
         {
             var selected = SelectedPatient;
@@ -90,18 +85,30 @@ namespace SampleDatabaseWalkthrough
                 lblFamilyName.Text = selected.FamilyName;
                 lblBirthDate.Text = selected.BirthDate.ToShortDateString();
 
-                btnEditPatient.Enabled = btnDeletePatient.Enabled = true;
+                btnEditPatient.Enabled =
+                    btnDeletePatient.Enabled =
+                    btnAddNote.Enabled =
+                    btnAddPhoto.Enabled =
+                    true;
             }
             else
             {
                 lblGivenName.Text = lblFamilyName.Text = lblBirthDate.Text = string.Empty;
-                btnEditPatient.Enabled = btnDeletePatient.Enabled = false;
+                btnEditPatient.Enabled =
+                    btnDeletePatient.Enabled =
+                    btnAddNote.Enabled =
+                    btnAddPhoto.Enabled =
+                    false;
             }
+
+            RefreshNotes();
+            RefreshPhotos();
         }
 
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
             var patient = new Patients();
+            patient.BirthDate = DateTime.Today;
 
             using (var dlg = new PatientEdit(patient))
             {
@@ -154,7 +161,121 @@ namespace SampleDatabaseWalkthrough
                     RefreshPatientList(dataContext);
                 }
             }
+        } 
+        #endregion
+
+        #region Notes
+        private void RefreshNotes()
+        {
+            using (var datacontext = new PatientsEntities())
+            {
+                RefreshNotes(datacontext);
+            }
         }
 
+        private void RefreshNotes(PatientsEntities dataContext)
+        {
+            var patient = SelectedPatient;
+            if (patient != null)
+            {
+                dgvNotes.DataSource = (from note in dataContext.Notes
+                                       where note.PatientId == patient.Id
+                                       select new SimpleDTO.NoteDTO
+                                       {
+                                           Id = note.Id,
+                                           Content = note.Content
+                                       }).ToList();
+            }
+            else
+            {
+                dgvNotes.DataSource = Enumerable.Empty<SimpleDTO.NoteDTO>();
+            }
+        }
+
+        private void dgvNotes_SelectionChanged(object sender, EventArgs e)
+        {
+            var selected = SelectedNote;
+
+            if (selected != null)
+            {
+                btnEditNote.Enabled = btnDeleteNote.Enabled = true;
+            }
+            else
+            {
+                btnEditNote.Enabled = btnDeleteNote.Enabled = false;
+            }
+        }
+
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            Notes note = new Notes();
+            note.PatientId = SelectedPatient.Id;
+
+            using (var dlg = new NoteEdit(note))
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    using(var dataContext = new PatientsEntities())
+                    {
+                        dataContext.Notes.Add(note);
+                        dataContext.SaveChanges();
+
+                        RefreshNotes(dataContext);
+                    }
+                }
+            }
+        }
+
+        private void btnEditNote_Click(object sender, EventArgs e)
+        {
+            using (var dataContext = new PatientsEntities())
+            {
+                var note = dataContext.Notes.Find(SelectedNote.Id);
+
+                using (var dlg = new NoteEdit(note))
+                {
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        dataContext.SaveChanges();
+                        RefreshNotes(dataContext);
+                    }
+                }
+            }
+        }
+
+        private void btnDeleteNote_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy usunąć notatkę?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using (var dataContext = new PatientsEntities())
+                {
+                    var patient = dataContext.Notes.Find(SelectedNote.Id);
+
+                    dataContext.Notes.Remove(patient);
+                    dataContext.SaveChanges();
+
+                    RefreshPatientList(dataContext);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Photos
+
+        private void RefreshPhotos()
+        {
+            using (var datacontext = new PatientsEntities())
+            {
+                RefreshPhotos(datacontext);
+            }
+        }
+
+        private void RefreshPhotos(PatientsEntities dataContext)
+        {
+
+        }
+
+        #endregion
     }
 }

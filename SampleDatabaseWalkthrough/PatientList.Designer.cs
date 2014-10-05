@@ -47,13 +47,33 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvNotes = new System.Windows.Forms.DataGridView();
+            this.colNoteId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNoteContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAddNote = new System.Windows.Forms.Button();
+            this.btnEditNote = new System.Windows.Forms.Button();
+            this.btnDeleteNote = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvPhoto = new System.Windows.Forms.DataGridView();
+            this.colPhotoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhotoSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAddPhoto = new System.Windows.Forms.Button();
+            this.btnEditPhoto = new System.Windows.Forms.Button();
+            this.btnDeletePhoto = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotes)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoto)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -94,12 +114,12 @@
             this.colFamilyName,
             this.colGivenName});
             this.dgvPatients.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPatients.Location = new System.Drawing.Point(0, 36);
+            this.dgvPatients.Location = new System.Drawing.Point(0, 33);
             this.dgvPatients.MultiSelect = false;
             this.dgvPatients.Name = "dgvPatients";
             this.dgvPatients.ReadOnly = true;
             this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatients.Size = new System.Drawing.Size(294, 392);
+            this.dgvPatients.Size = new System.Drawing.Size(294, 395);
             this.dgvPatients.TabIndex = 1;
             this.dgvPatients.SelectionChanged += new System.EventHandler(this.dgvPatients_SelectionChanged);
             // 
@@ -133,7 +153,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(294, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(294, 33);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btnAddPatient
@@ -212,7 +232,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(3, 23);
+            this.label3.Location = new System.Drawing.Point(66, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 2;
@@ -230,7 +250,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(35, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 0;
@@ -249,6 +269,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dgvNotes);
+            this.tabPage1.Controls.Add(this.flowLayoutPanel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -257,8 +279,90 @@
             this.tabPage1.Text = "Notatki";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dgvNotes
+            // 
+            this.dgvNotes.AllowUserToAddRows = false;
+            this.dgvNotes.AllowUserToDeleteRows = false;
+            this.dgvNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colNoteId,
+            this.colNoteContent});
+            this.dgvNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvNotes.Location = new System.Drawing.Point(3, 36);
+            this.dgvNotes.MultiSelect = false;
+            this.dgvNotes.Name = "dgvNotes";
+            this.dgvNotes.ReadOnly = true;
+            this.dgvNotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNotes.Size = new System.Drawing.Size(536, 283);
+            this.dgvNotes.TabIndex = 1;
+            this.dgvNotes.SelectionChanged += new System.EventHandler(this.dgvNotes_SelectionChanged);
+            // 
+            // colNoteId
+            // 
+            this.colNoteId.DataPropertyName = "Id";
+            this.colNoteId.FillWeight = 40F;
+            this.colNoteId.HeaderText = "#";
+            this.colNoteId.Name = "colNoteId";
+            this.colNoteId.ReadOnly = true;
+            this.colNoteId.Width = 40;
+            // 
+            // colNoteContent
+            // 
+            this.colNoteContent.DataPropertyName = "Content";
+            this.colNoteContent.FillWeight = 200F;
+            this.colNoteContent.HeaderText = "Treść";
+            this.colNoteContent.Name = "colNoteContent";
+            this.colNoteContent.ReadOnly = true;
+            this.colNoteContent.Width = 250;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.btnAddNote);
+            this.flowLayoutPanel2.Controls.Add(this.btnEditNote);
+            this.flowLayoutPanel2.Controls.Add(this.btnDeleteNote);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(536, 33);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // btnAddNote
+            // 
+            this.btnAddNote.Enabled = false;
+            this.btnAddNote.Location = new System.Drawing.Point(3, 3);
+            this.btnAddNote.Name = "btnAddNote";
+            this.btnAddNote.Size = new System.Drawing.Size(75, 23);
+            this.btnAddNote.TabIndex = 0;
+            this.btnAddNote.Text = "Dodaj";
+            this.btnAddNote.UseVisualStyleBackColor = true;
+            this.btnAddNote.Click += new System.EventHandler(this.btnAddNote_Click);
+            // 
+            // btnEditNote
+            // 
+            this.btnEditNote.Enabled = false;
+            this.btnEditNote.Location = new System.Drawing.Point(84, 3);
+            this.btnEditNote.Name = "btnEditNote";
+            this.btnEditNote.Size = new System.Drawing.Size(75, 23);
+            this.btnEditNote.TabIndex = 1;
+            this.btnEditNote.Text = "Edytuj";
+            this.btnEditNote.UseVisualStyleBackColor = true;
+            this.btnEditNote.Click += new System.EventHandler(this.btnEditNote_Click);
+            // 
+            // btnDeleteNote
+            // 
+            this.btnDeleteNote.Enabled = false;
+            this.btnDeleteNote.Location = new System.Drawing.Point(165, 3);
+            this.btnDeleteNote.Name = "btnDeleteNote";
+            this.btnDeleteNote.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteNote.TabIndex = 2;
+            this.btnDeleteNote.Text = "Usuń";
+            this.btnDeleteNote.UseVisualStyleBackColor = true;
+            this.btnDeleteNote.Click += new System.EventHandler(this.btnDeleteNote_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dgvPhoto);
+            this.tabPage2.Controls.Add(this.flowLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -266,6 +370,79 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Zdjęcia";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgvPhoto
+            // 
+            this.dgvPhoto.AllowUserToAddRows = false;
+            this.dgvPhoto.AllowUserToDeleteRows = false;
+            this.dgvPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colPhotoId,
+            this.colPhotoSummary});
+            this.dgvPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPhoto.Location = new System.Drawing.Point(3, 36);
+            this.dgvPhoto.MultiSelect = false;
+            this.dgvPhoto.Name = "dgvPhoto";
+            this.dgvPhoto.ReadOnly = true;
+            this.dgvPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPhoto.Size = new System.Drawing.Size(536, 283);
+            this.dgvPhoto.TabIndex = 1;
+            // 
+            // colPhotoId
+            // 
+            this.colPhotoId.DataPropertyName = "Id";
+            this.colPhotoId.HeaderText = "#";
+            this.colPhotoId.Name = "colPhotoId";
+            this.colPhotoId.ReadOnly = true;
+            this.colPhotoId.Width = 40;
+            // 
+            // colPhotoSummary
+            // 
+            this.colPhotoSummary.DataPropertyName = "Summary";
+            this.colPhotoSummary.HeaderText = "Podsumowanie";
+            this.colPhotoSummary.Name = "colPhotoSummary";
+            this.colPhotoSummary.ReadOnly = true;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnAddPhoto);
+            this.flowLayoutPanel3.Controls.Add(this.btnEditPhoto);
+            this.flowLayoutPanel3.Controls.Add(this.btnDeletePhoto);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 33);
+            this.flowLayoutPanel3.TabIndex = 0;
+            // 
+            // btnAddPhoto
+            // 
+            this.btnAddPhoto.Enabled = false;
+            this.btnAddPhoto.Location = new System.Drawing.Point(3, 3);
+            this.btnAddPhoto.Name = "btnAddPhoto";
+            this.btnAddPhoto.Size = new System.Drawing.Size(75, 23);
+            this.btnAddPhoto.TabIndex = 0;
+            this.btnAddPhoto.Text = "Dodaj";
+            this.btnAddPhoto.UseVisualStyleBackColor = true;
+            // 
+            // btnEditPhoto
+            // 
+            this.btnEditPhoto.Enabled = false;
+            this.btnEditPhoto.Location = new System.Drawing.Point(84, 3);
+            this.btnEditPhoto.Name = "btnEditPhoto";
+            this.btnEditPhoto.Size = new System.Drawing.Size(75, 23);
+            this.btnEditPhoto.TabIndex = 1;
+            this.btnEditPhoto.Text = "Edytuj";
+            this.btnEditPhoto.UseVisualStyleBackColor = true;
+            // 
+            // btnDeletePhoto
+            // 
+            this.btnDeletePhoto.Enabled = false;
+            this.btnDeletePhoto.Location = new System.Drawing.Point(165, 3);
+            this.btnDeletePhoto.Name = "btnDeletePhoto";
+            this.btnDeletePhoto.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletePhoto.TabIndex = 2;
+            this.btnDeletePhoto.Text = "Usuń";
+            this.btnDeletePhoto.UseVisualStyleBackColor = true;
             // 
             // PatientList
             // 
@@ -281,6 +458,12 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNotes)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoto)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -307,5 +490,19 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.DataGridView dgvNotes;
+        private System.Windows.Forms.Button btnAddNote;
+        private System.Windows.Forms.Button btnEditNote;
+        private System.Windows.Forms.Button btnDeleteNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNoteId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNoteContent;
+        private System.Windows.Forms.DataGridView dgvPhoto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhotoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhotoSummary;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button btnAddPhoto;
+        private System.Windows.Forms.Button btnEditPhoto;
+        private System.Windows.Forms.Button btnDeletePhoto;
     }
 }
