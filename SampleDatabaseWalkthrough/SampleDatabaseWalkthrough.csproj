@@ -101,6 +101,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DbPhotoChoose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DbPhotoChoose.Designer.cs">
+      <DependentUpon>DbPhotoChoose.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     <Compile Include="SimpleDTO\NoteDTO.cs" />
     <Compile Include="SimpleDTO\PatientDTO.cs" />
     <Compile Include="SimpleDTO\PhotoDTO.cs" />
+    <EmbeddedResource Include="DbPhotoChoose.resx">
+      <DependentUpon>DbPhotoChoose.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
