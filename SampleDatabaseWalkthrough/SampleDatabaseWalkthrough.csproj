@@ -268,10 +268,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Patients.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Patients_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Patients.mdf</DependentUpon>
     </Content>
   </ItemGroup>
