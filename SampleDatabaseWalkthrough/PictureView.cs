@@ -65,7 +65,7 @@ namespace SampleDatabaseWalkthrough
         private void btnRotate_Click(object sender, EventArgs e)
         {
             double angle = (double)nudAngle.Value;
-            Image = Image.Rotate(angle, new Gray(512), false);
+            Image = Image.Rotate(angle, new Gray(512), true);
         }
 
         private void btnScale_Click(object sender, EventArgs e)
