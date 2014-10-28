@@ -41,8 +41,6 @@
             this.btnOpenFile1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOpenFile2 = new System.Windows.Forms.Button();
-            this.btnDb1 = new System.Windows.Forms.Button();
-            this.btnDb2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -150,7 +148,6 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnOpenFile1);
-            this.flowLayoutPanel1.Controls.Add(this.btnDb1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -171,7 +168,6 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnOpenFile2);
-            this.flowLayoutPanel2.Controls.Add(this.btnDb2);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(436, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -188,26 +184,6 @@
             this.btnOpenFile2.Text = "Z pliku";
             this.btnOpenFile2.UseVisualStyleBackColor = true;
             this.btnOpenFile2.Click += new System.EventHandler(this.btnOpenFile2_Click);
-            // 
-            // btnDb1
-            // 
-            this.btnDb1.Location = new System.Drawing.Point(206, 3);
-            this.btnDb1.Name = "btnDb1";
-            this.btnDb1.Size = new System.Drawing.Size(197, 23);
-            this.btnDb1.TabIndex = 5;
-            this.btnDb1.Text = "Z bazy";
-            this.btnDb1.UseVisualStyleBackColor = true;
-            this.btnDb1.Click += new System.EventHandler(this.btnDb1_Click);
-            // 
-            // btnDb2
-            // 
-            this.btnDb2.Location = new System.Drawing.Point(206, 3);
-            this.btnDb2.Name = "btnDb2";
-            this.btnDb2.Size = new System.Drawing.Size(197, 23);
-            this.btnDb2.TabIndex = 5;
-            this.btnDb2.Text = "Z bazy";
-            this.btnDb2.UseVisualStyleBackColor = true;
-            this.btnDb2.Click += new System.EventHandler(this.btnDb2_Click);
             // 
             // PictureCompare
             // 
@@ -240,7 +216,5 @@
         private System.Windows.Forms.Button btnOpenFile1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnOpenFile2;
-        private System.Windows.Forms.Button btnDb1;
-        private System.Windows.Forms.Button btnDb2;
     }
 }

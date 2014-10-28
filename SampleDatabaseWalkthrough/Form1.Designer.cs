@@ -29,21 +29,29 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlContent = new System.Windows.Forms.Panel();
-            this.btnDatabase = new System.Windows.Forms.Button();
             this.btnPictureCompare = new System.Windows.Forms.Button();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnDatabase);
             this.flowLayoutPanel1.Controls.Add(this.btnPictureCompare);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(846, 34);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // btnPictureCompare
+            // 
+            this.btnPictureCompare.Location = new System.Drawing.Point(3, 3);
+            this.btnPictureCompare.Name = "btnPictureCompare";
+            this.btnPictureCompare.Size = new System.Drawing.Size(197, 23);
+            this.btnPictureCompare.TabIndex = 1;
+            this.btnPictureCompare.Text = "Miary podobieństwa";
+            this.btnPictureCompare.UseVisualStyleBackColor = true;
+            this.btnPictureCompare.Click += new System.EventHandler(this.btnPictureCompare_Click);
             // 
             // pnlContent
             // 
@@ -53,26 +61,6 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(846, 496);
             this.pnlContent.TabIndex = 1;
-            // 
-            // btnDatabase
-            // 
-            this.btnDatabase.Location = new System.Drawing.Point(3, 3);
-            this.btnDatabase.Name = "btnDatabase";
-            this.btnDatabase.Size = new System.Drawing.Size(197, 23);
-            this.btnDatabase.TabIndex = 0;
-            this.btnDatabase.Text = "Kartoteka";
-            this.btnDatabase.UseVisualStyleBackColor = true;
-            this.btnDatabase.Click += new System.EventHandler(this.btnDatabase_Click);
-            // 
-            // btnPictureCompare
-            // 
-            this.btnPictureCompare.Location = new System.Drawing.Point(206, 3);
-            this.btnPictureCompare.Name = "btnPictureCompare";
-            this.btnPictureCompare.Size = new System.Drawing.Size(197, 23);
-            this.btnPictureCompare.TabIndex = 1;
-            this.btnPictureCompare.Text = "Miary podobieństwa";
-            this.btnPictureCompare.UseVisualStyleBackColor = true;
-            this.btnPictureCompare.Click += new System.EventHandler(this.btnPictureCompare_Click);
             // 
             // Form1
             // 
@@ -92,7 +80,6 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel pnlContent;
-        private System.Windows.Forms.Button btnDatabase;
         private System.Windows.Forms.Button btnPictureCompare;
 
 

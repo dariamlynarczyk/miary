@@ -54,28 +54,7 @@ namespace SampleDatabaseWalkthrough
             }
         }
 
-        private void btnDb1_Click(object sender, EventArgs e)
-        {
-            using (DbPhotoChoose dlg = new DbPhotoChoose())
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    pictureView1.Image = dlg.Image;
-                }
-            }
-        }
-
-        private void btnDb2_Click(object sender, EventArgs e)
-        {
-            using (DbPhotoChoose dlg = new DbPhotoChoose())
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    pictureView2.Image = dlg.Image;
-                }
-            }
-        }
-
+       
         private void btnCrossCorrelation_Click(object sender, EventArgs e)
         {
             DisplayMeasure(new Measures.CrossCorrelation());
