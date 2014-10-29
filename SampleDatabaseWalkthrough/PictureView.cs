@@ -123,7 +123,7 @@ namespace SampleDatabaseWalkthrough
         {
             Random r = new Random();
 
-            var image = Image;
+            var image = Image.Clone();
 
             for (int i = 0; i < image.Width; i++)
             {
