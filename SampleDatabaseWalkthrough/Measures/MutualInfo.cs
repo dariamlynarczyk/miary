@@ -7,6 +7,11 @@ namespace SampleDatabaseWalkthrough.Measures
 {
     public class MutualInfo : IMeasure
     {
+        public string Name
+        {
+            get { return "Informacja wzajemna"; }
+        }
+
         public double Compute(double[,] left, double[,] right)
         {
             double[] leftNorm = NormalizeArray(left);

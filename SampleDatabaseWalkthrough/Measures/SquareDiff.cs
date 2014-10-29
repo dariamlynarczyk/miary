@@ -7,6 +7,12 @@ namespace SampleDatabaseWalkthrough.Measures
 {
     public class SquareDiff : IMeasure
     {
+
+        public string Name
+        {
+            get { return "Suma kwadratów różnic"; }
+        }
+
         public double Compute(double[,] left, double[,] right)
         {
             int width = left.GetLength(0);

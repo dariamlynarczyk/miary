@@ -54,23 +54,8 @@ namespace SampleDatabaseWalkthrough
             }
         }
 
-       
-        private void btnCrossCorrelation_Click(object sender, EventArgs e)
-        {
-            DisplayMeasure(new Measures.CrossCorrelation());
-        }
 
-        private void btnMutualInformation_Click(object sender, EventArgs e)
-        {
-            DisplayMeasure(new Measures.MutualInfo());
-        }
-
-        private void btnSquareDiffSum_Click(object sender, EventArgs e)
-        {
-            DisplayMeasure(new Measures.SquareDiff());
-        }
-
-        private void DisplayMeasure(Measures.IMeasure measure)
+        private void btnCompare_Click(object sender, EventArgs e)
         {
             var left = pictureView1.Image;
             var right = pictureView2.Image;
@@ -92,7 +77,24 @@ namespace SampleDatabaseWalkthrough
                 rightArr = ImageToMatrix(image);
             }
 
-            lblResult.Text = measure.Compute(leftArr, rightArr).ToString();
+            var measures = new Measures.IMeasure[] 
+            {
+                new Measures.CrossCorrelation(),
+                new Measures.HiKwadrat(),
+                new Measures.MutualInfo(),
+                new Measures.SquareDiff()
+            };
+
+            var sbResult = new StringBuilder();
+
+            foreach (var measure in measures)
+            {
+                sbResult.Append(measure.Name);
+                sbResult.Append(": ");
+                sbResult.AppendLine(measure.Compute(leftArr, rightArr).ToString());
+            }
+
+            tbResult.Text = sbResult.ToString();
         }
 
         private double[,] ImageToMatrix(Image<Gray, double> image)

@@ -7,6 +7,11 @@ namespace SampleDatabaseWalkthrough.Measures
 {
     public class CrossCorrelation : IMeasure
     {
+        public string Name
+        {
+            get { return "Korelacja krzyżowa"; }
+        }
+
         public double Compute(double[,] left, double[,] right)
         {
             double sum = 0;
@@ -28,5 +33,6 @@ namespace SampleDatabaseWalkthrough.Measures
 
             return sum / Math.Sqrt(sumOfLeftSquares * sumOfRightSquares);
         }
+
     }
 }

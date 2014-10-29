@@ -7,6 +7,8 @@ namespace SampleDatabaseWalkthrough.Measures
 {
     public interface IMeasure
     {
+        string Name { get; }
+
         double Compute(double[,] left, double[,] right);
     }
 }

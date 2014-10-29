@@ -6,8 +6,13 @@ using System.Text;
 
 namespace SampleDatabaseWalkthrough.Measures
 {
-    class HiKwadrat:IMeasure
+    class HiKwadrat : IMeasure
     {
+        public string Name
+        {
+            get { return "Miara odległości Chi kwadrat"; }
+        }
+
         public double Compute(double[,] left, double[,] right)
         {
 
@@ -19,16 +24,12 @@ namespace SampleDatabaseWalkthrough.Measures
             {
                 for (int y = 0; y < height; y++)
                 {
-                    double sqrDiff = Math.Pow(left[x, y] - right[x, y], 2);
+                    double sqrDiff = Math.Pow(left[x, y] - right[x, y], 2) / (left[x, y] + right[x, y]);
                     sum += sqrDiff;
                 }
             }
-
-            sum = sum / (width * height);
-
-            // suma może przyjmować wartości od 0 do 256*256 
-            // nie wiem czy nie lepiej byłoby zastosować inne przekształcenie niż liniowe ale niech będzie
-            return sum / 256;
+            
+            return sum;
         }
     }
 }
