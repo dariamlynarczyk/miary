@@ -118,5 +118,25 @@ namespace SampleDatabaseWalkthrough
             //Image = Image.SmoothMedian(windowSize);
             Image = Image.SmoothBlur(windowSize, windowSize);
         }
+
+        private void btnNoise_Click(object sender, EventArgs e)
+        {
+            Random r = new Random();
+
+            var image = Image;
+
+            for (int i = 0; i < image.Width; i++)
+            {
+                for (int j = 0; j < image.Height; j++)
+                {
+                    if (r.Next(100) == 0)
+                    {
+                        image[j, i] = new Gray(256);
+                    }
+                }
+            }
+
+            Image = image;
+        }
     }
 }

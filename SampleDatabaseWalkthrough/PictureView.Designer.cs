@@ -51,6 +51,8 @@
             this.btnCrop = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnNoise = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAngle)).BeginInit();
@@ -62,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -83,10 +86,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.btnDenoise, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 346);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -98,9 +101,9 @@
             // 
             this.btnDenoise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDenoise.Location = new System.Drawing.Point(594, 3);
+            this.btnDenoise.Location = new System.Drawing.Point(3, 4);
             this.btnDenoise.Name = "btnDenoise";
-            this.btnDenoise.Size = new System.Drawing.Size(191, 23);
+            this.btnDenoise.Size = new System.Drawing.Size(185, 23);
             this.btnDenoise.TabIndex = 3;
             this.btnDenoise.Text = "Odszumianie";
             this.btnDenoise.UseVisualStyleBackColor = true;
@@ -331,6 +334,28 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnNoise);
+            this.panel4.Controls.Add(this.btnDenoise);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(594, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(191, 129);
+            this.panel4.TabIndex = 7;
+            // 
+            // btnNoise
+            // 
+            this.btnNoise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNoise.Location = new System.Drawing.Point(3, 33);
+            this.btnNoise.Name = "btnNoise";
+            this.btnNoise.Size = new System.Drawing.Size(185, 23);
+            this.btnNoise.TabIndex = 4;
+            this.btnNoise.Text = "Dodaj szum";
+            this.btnNoise.UseVisualStyleBackColor = true;
+            this.btnNoise.Click += new System.EventHandler(this.btnNoise_Click);
+            // 
             // PictureView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +381,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,5 +412,7 @@
         private System.Windows.Forms.NumericUpDown nudCropRight;
         private System.Windows.Forms.NumericUpDown nudCropLeft;
         private System.Windows.Forms.Button btnCrop;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnNoise;
     }
 }
