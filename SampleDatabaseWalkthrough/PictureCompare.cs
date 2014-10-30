@@ -58,10 +58,11 @@ namespace SampleDatabaseWalkthrough
         {
             using(var sfd = new SaveFileDialog())
             {
-                sfd.Filter = "Pliki DICOM|*.dcm";
+                sfd.Filter = "Pliki JPEG|*.jpg";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    ConvertHelper.Write(pictureView1.Image, sfd.FileName);
+                    //ConvertHelper.Write(pictureView1.Image, sfd.FileName);
+                    pictureView1.Image.Save(sfd.FileName);
                 }
             }
         }
@@ -71,10 +72,11 @@ namespace SampleDatabaseWalkthrough
         {
             using (var sfd = new SaveFileDialog())
             {
-                sfd.Filter = "Pliki DICOM|*.dcm";
+                sfd.Filter = "Pliki JPEG|*.jpg";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    ConvertHelper.Write(pictureView2.Image, sfd.FileName);
+                    //ConvertHelper.Write(pictureView2.Image, sfd.FileName);
+                    pictureView2.Image.Save(sfd.FileName);
                 }
             }
         }

@@ -35,15 +35,21 @@ namespace SampleDatabaseWalkthrough
             var height = new UnsignedShort(TagHelper.COLUMNS, image.Width);
 
             var interp = new CodeString(TagHelper.PHOTOMETRIC_INTERPRETATION, "MONOCHROME2");
-
             
-
-
             var dObj = new DICOMObject(new List<EvilDICOM.Core.Interfaces.IDICOMElement>{
                 width,
                 height,
                 interp
             });
+
+            using (var writer = new EvilDICOM.Core.IO.Writing.DICOMBinaryWriter(fileName))
+            {
+                var setting = new EvilDICOM.Core.IO.Writing.DICOMWriteSettings()
+                {
+                };
+
+                EvilDICOM.Core.IO.Writing.DICOMObjectWriter.WriteObjectLittleEndian(writer, setting, dObj);
+            }
 
             using(var memoryStream = new MemoryStream())
             {
@@ -63,7 +69,10 @@ namespace SampleDatabaseWalkthrough
 
                 memoryStream.Position = 0;
 
-                memoryStream.CopyTo(dObj.PixelStream);
+                using (var fileStream = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+                {
+                    memoryStream.CopyTo(fileStream);
+                }
             }
         }
 
