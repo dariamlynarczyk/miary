@@ -83,17 +83,25 @@ namespace SampleDatabaseWalkthrough
 
             double angle = (double)nudAngle.Value;            
             var tempImage = Image.Rotate(angle, new Gray(512), false);
-            
-            double radians = Math.PI * angle / 180.0;
 
-            int newHeight = (int)(Math.Sqrt(Math.Pow(shorterSide, 2) / (Math.Pow(Math.Tan(radians), 2) + 1)));
-            int newWidth = (int)(Math.Sqrt(Math.Pow(shorterSide, 2) * Math.Pow(Math.Tan(radians), 2) / (Math.Pow(Math.Tan(radians), 2) + 1)));
+            if (angle % 90 == 0)
+            {
+                Image = tempImage;
+            }
+            else
+            {
+                angle = angle % 45;
+                double radians = Math.PI * angle / 180.0;
 
-            int x = (tempImage.Width / 2) - (newWidth / 2);
-            int y = (tempImage.Height / 2) - (newHeight / 2);
+                int newHeight = (int)(Math.Sqrt(Math.Pow(shorterSide, 2) / (Math.Pow(Math.Tan(radians), 2) + 1)));
+                int newWidth = (int)(Math.Sqrt(Math.Pow(shorterSide, 2) * Math.Pow(Math.Tan(radians), 2) / (Math.Pow(Math.Tan(radians), 2) + 1)));
 
-            Rectangle rect = new Rectangle(x, y, newWidth, newHeight);
-            Image = tempImage.Copy(rect);
+                int x = (tempImage.Width / 2) - (newWidth / 2);
+                int y = (tempImage.Height / 2) - (newHeight / 2);
+
+                Rectangle rect = new Rectangle(x, y, newWidth, newHeight);
+                Image = tempImage.Copy(rect);
+            }
         }
 
         private void btnScale_Click(object sender, EventArgs e)
