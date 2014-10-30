@@ -29,6 +29,44 @@ namespace SampleDatabaseWalkthrough
             return Read(dicomData);
         }
 
+        public static void Write(Image<Gray, double> image, string fileName)
+        {
+            var width = new UnsignedShort(TagHelper.ROWS, image.Height);
+            var height = new UnsignedShort(TagHelper.COLUMNS, image.Width);
+
+            var interp = new CodeString(TagHelper.PHOTOMETRIC_INTERPRETATION, "MONOCHROME2");
+
+            
+
+
+            var dObj = new DICOMObject(new List<EvilDICOM.Core.Interfaces.IDICOMElement>{
+                width,
+                height,
+                interp
+            });
+
+            using(var memoryStream = new MemoryStream())
+            {
+                for (int y = 0; y < image.Height; y++)
+                {
+                    for (int x = 0; x < image.Width; x++)
+                    {
+                        double pixelIntensity = image[y, x].Intensity;
+
+                        byte firstPixelByte = (byte)(pixelIntensity / 256);
+                        byte secondPixelByte = (byte)(pixelIntensity % 256);
+
+                        memoryStream.WriteByte(firstPixelByte);
+                        memoryStream.WriteByte(secondPixelByte);
+                    }
+                }
+
+                memoryStream.Position = 0;
+
+                memoryStream.CopyTo(dObj.PixelStream);
+            }
+        }
+
         private static Image<Gray, double> Read(DICOMObject dicomData)
         {
             ushort height = ((UnsignedShort)dicomData.FindFirst(TagHelper.ROWS)).Data;

@@ -54,6 +54,30 @@ namespace SampleDatabaseWalkthrough
             }
         }
 
+        private void btnSave1_Click(object sender, EventArgs e)
+        {
+            using(var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Pliki DICOM|*.dcm";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ConvertHelper.Write(pictureView1.Image, sfd.FileName);
+                }
+            }
+        }
+
+
+        private void btnSave2_Click(object sender, EventArgs e)
+        {
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Pliki DICOM|*.dcm";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ConvertHelper.Write(pictureView2.Image, sfd.FileName);
+                }
+            }
+        }
 
         private void btnCompare_Click(object sender, EventArgs e)
         {

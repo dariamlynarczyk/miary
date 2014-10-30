@@ -30,14 +30,16 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbResult = new System.Windows.Forms.TextBox();
             this.btnCompare = new System.Windows.Forms.Button();
             this.pnlPictureView1 = new System.Windows.Forms.Panel();
             this.pnlPictureView2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOpenFile1 = new System.Windows.Forms.Button();
+            this.btnSave1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOpenFile2 = new System.Windows.Forms.Button();
-            this.tbResult = new System.Windows.Forms.TextBox();
+            this.btnSave2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -75,6 +77,15 @@
             this.panel1.Size = new System.Drawing.Size(867, 87);
             this.panel1.TabIndex = 0;
             // 
+            // tbResult
+            // 
+            this.tbResult.Location = new System.Drawing.Point(158, 4);
+            this.tbResult.Multiline = true;
+            this.tbResult.Name = "tbResult";
+            this.tbResult.ReadOnly = true;
+            this.tbResult.Size = new System.Drawing.Size(706, 80);
+            this.tbResult.TabIndex = 6;
+            // 
             // btnCompare
             // 
             this.btnCompare.Location = new System.Drawing.Point(4, 4);
@@ -104,6 +115,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnOpenFile1);
+            this.flowLayoutPanel1.Controls.Add(this.btnSave1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -117,13 +129,24 @@
             this.btnOpenFile1.Name = "btnOpenFile1";
             this.btnOpenFile1.Size = new System.Drawing.Size(197, 23);
             this.btnOpenFile1.TabIndex = 4;
-            this.btnOpenFile1.Text = "Z pliku";
+            this.btnOpenFile1.Text = "Otwórz";
             this.btnOpenFile1.UseVisualStyleBackColor = true;
             this.btnOpenFile1.Click += new System.EventHandler(this.btnOpenFile1_Click);
+            // 
+            // btnSave1
+            // 
+            this.btnSave1.Location = new System.Drawing.Point(206, 3);
+            this.btnSave1.Name = "btnSave1";
+            this.btnSave1.Size = new System.Drawing.Size(197, 23);
+            this.btnSave1.TabIndex = 5;
+            this.btnSave1.Text = "Zapisz";
+            this.btnSave1.UseVisualStyleBackColor = true;
+            this.btnSave1.Click += new System.EventHandler(this.btnSave1_Click);
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.btnOpenFile2);
+            this.flowLayoutPanel2.Controls.Add(this.btnSave2);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(436, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -141,14 +164,15 @@
             this.btnOpenFile2.UseVisualStyleBackColor = true;
             this.btnOpenFile2.Click += new System.EventHandler(this.btnOpenFile2_Click);
             // 
-            // tbResult
+            // btnSave2
             // 
-            this.tbResult.Location = new System.Drawing.Point(158, 4);
-            this.tbResult.Multiline = true;
-            this.tbResult.Name = "tbResult";
-            this.tbResult.ReadOnly = true;
-            this.tbResult.Size = new System.Drawing.Size(706, 80);
-            this.tbResult.TabIndex = 6;
+            this.btnSave2.Location = new System.Drawing.Point(206, 3);
+            this.btnSave2.Name = "btnSave2";
+            this.btnSave2.Size = new System.Drawing.Size(197, 23);
+            this.btnSave2.TabIndex = 6;
+            this.btnSave2.Text = "Zapisz";
+            this.btnSave2.UseVisualStyleBackColor = true;
+            this.btnSave2.Click += new System.EventHandler(this.btnSave2_Click);
             // 
             // PictureCompare
             // 
@@ -178,5 +202,7 @@
         private System.Windows.Forms.Button btnOpenFile2;
         private System.Windows.Forms.Button btnCompare;
         private System.Windows.Forms.TextBox tbResult;
+        private System.Windows.Forms.Button btnSave1;
+        private System.Windows.Forms.Button btnSave2;
     }
 }

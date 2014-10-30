@@ -50,6 +50,21 @@ namespace SampleDatabaseWalkthrough
                 nudCropLeft.Maximum = nudCropRight.Maximum = image.Width;
                 nudCropTop.Maximum = nudCropBottom.Maximum = image.Height;
 
+                // Dla obrazów dla których wysokość lub szerokość <= 3 nie robię nic
+                if (image.Width <= 3 || image.Height <= 3)
+                {
+                    nudWindowSize.Enabled = false;
+                    btnDenoise.Enabled = false;
+                }
+                else
+                {
+                    nudWindowSize.Minimum = 1;
+                    // Tak żeby okno za duże nie było
+                    nudWindowSize.Maximum = Math.Min(image.Width, image.Height) / 4;
+                    nudWindowSize.Enabled = true;
+                    btnDenoise.Enabled = true;
+                }
+
                 if (oldImage != null)
                 {
                     oldImage.Dispose();
@@ -64,8 +79,9 @@ namespace SampleDatabaseWalkthrough
 
         private void btnRotate_Click(object sender, EventArgs e)
         {
-            double angle = (double)nudAngle.Value;
-            Image = Image.Rotate(angle, new Gray(512), true);
+            double angle = (double)nudAngle.Value;            
+            Image = Image.Rotate(angle, new Gray(512), false);
+            
         }
 
         private void btnScale_Click(object sender, EventArgs e)
@@ -98,24 +114,9 @@ namespace SampleDatabaseWalkthrough
 
         private void btnDenoise_Click(object sender, EventArgs e)
         {
-            // Dla obrazów dla których wysokość lub szerokość <= 3 nie robię nic
-            if (Image.Width <= 3 || Image.Height <= 3)
-            {
-                return;
-            }
+            int windowSize = (int)nudWindowSize.Value;
+            windowSize = 2 * windowSize + 1;
 
-            int windowSize;
-            // Dla małych obrazów wykorzystuję okno mniejsze od połowy mniejszego wymiaru
-            if (Image.Width <= 10 || Image.Height <= 10)
-            {
-                windowSize = Math.Min(Image.Width, Image.Height) / 2;
-            }
-            else
-            {
-                windowSize = 5;
-            }
-
-            //Image = Image.SmoothMedian(windowSize);
             Image = Image.SmoothBlur(windowSize, windowSize);
         }
 
@@ -123,13 +124,15 @@ namespace SampleDatabaseWalkthrough
         {
             Random r = new Random();
 
+            int intensity = (int)nudNoiseIntens.Value;
+
             var image = Image.Clone();
 
             for (int i = 0; i < image.Width; i++)
             {
                 for (int j = 0; j < image.Height; j++)
                 {
-                    if (r.Next(100) == 0)
+                    if (r.Next(100) < intensity)
                     {
                         image[j, i] = new Gray(256);
                     }

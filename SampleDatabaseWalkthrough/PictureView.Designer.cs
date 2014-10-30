@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDenoise = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.nudAngle = new System.Windows.Forms.NumericUpDown();
@@ -49,10 +48,15 @@
             this.nudCropRight = new System.Windows.Forms.NumericUpDown();
             this.nudCropLeft = new System.Windows.Forms.NumericUpDown();
             this.btnCrop = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnNoise = new System.Windows.Forms.Button();
+            this.btnDenoise = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nudWindowSize = new System.Windows.Forms.NumericUpDown();
+            this.nudNoiseIntens = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAngle)).BeginInit();
@@ -62,16 +66,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCropBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).BeginInit();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWindowSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNoiseIntens)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 330);
+            this.label1.Location = new System.Drawing.Point(4, 299);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 2;
@@ -90,24 +96,12 @@
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 3, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 346);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 315);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 135);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 166);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // btnDenoise
-            // 
-            this.btnDenoise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDenoise.Location = new System.Drawing.Point(3, 4);
-            this.btnDenoise.Name = "btnDenoise";
-            this.btnDenoise.Size = new System.Drawing.Size(185, 23);
-            this.btnDenoise.TabIndex = 3;
-            this.btnDenoise.Text = "Odszumianie";
-            this.btnDenoise.UseVisualStyleBackColor = true;
-            this.btnDenoise.Click += new System.EventHandler(this.btnDenoise_Click);
             // 
             // panel1
             // 
@@ -117,7 +111,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(191, 129);
+            this.panel1.Size = new System.Drawing.Size(191, 160);
             this.panel1.TabIndex = 4;
             // 
             // label2
@@ -173,7 +167,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(200, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(191, 129);
+            this.panel3.Size = new System.Drawing.Size(191, 160);
             this.panel3.TabIndex = 5;
             // 
             // btnScale
@@ -231,7 +225,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 129);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(191, 160);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // label4
@@ -313,6 +307,44 @@
             this.btnCrop.UseVisualStyleBackColor = true;
             this.btnCrop.Click += new System.EventHandler(this.btnCrop_Click);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label9);
+            this.panel4.Controls.Add(this.nudNoiseIntens);
+            this.panel4.Controls.Add(this.nudWindowSize);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.btnNoise);
+            this.panel4.Controls.Add(this.btnDenoise);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(594, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(191, 160);
+            this.panel4.TabIndex = 7;
+            // 
+            // btnNoise
+            // 
+            this.btnNoise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNoise.Location = new System.Drawing.Point(3, 124);
+            this.btnNoise.Name = "btnNoise";
+            this.btnNoise.Size = new System.Drawing.Size(185, 23);
+            this.btnNoise.TabIndex = 4;
+            this.btnNoise.Text = "Dodaj szum";
+            this.btnNoise.UseVisualStyleBackColor = true;
+            this.btnNoise.Click += new System.EventHandler(this.btnNoise_Click);
+            // 
+            // btnDenoise
+            // 
+            this.btnDenoise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDenoise.Location = new System.Drawing.Point(6, 47);
+            this.btnDenoise.Name = "btnDenoise";
+            this.btnDenoise.Size = new System.Drawing.Size(185, 23);
+            this.btnDenoise.TabIndex = 3;
+            this.btnDenoise.Text = "Odszumianie";
+            this.btnDenoise.UseVisualStyleBackColor = true;
+            this.btnDenoise.Click += new System.EventHandler(this.btnDenoise_Click);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -322,7 +354,7 @@
             this.panel2.Controls.Add(this.pictureBox);
             this.panel2.Location = new System.Drawing.Point(4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(785, 324);
+            this.panel2.Size = new System.Drawing.Size(785, 293);
             this.panel2.TabIndex = 5;
             // 
             // pictureBox
@@ -334,27 +366,51 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
-            // panel4
+            // label8
             // 
-            this.panel4.Controls.Add(this.btnNoise);
-            this.panel4.Controls.Add(this.btnDenoise);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(594, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(191, 129);
-            this.panel4.TabIndex = 7;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Wielkość okna";
             // 
-            // btnNoise
+            // nudWindowSize
             // 
-            this.btnNoise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.nudWindowSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNoise.Location = new System.Drawing.Point(3, 33);
-            this.btnNoise.Name = "btnNoise";
-            this.btnNoise.Size = new System.Drawing.Size(185, 23);
-            this.btnNoise.TabIndex = 4;
-            this.btnNoise.Text = "Dodaj szum";
-            this.btnNoise.UseVisualStyleBackColor = true;
-            this.btnNoise.Click += new System.EventHandler(this.btnNoise_Click);
+            this.nudWindowSize.Location = new System.Drawing.Point(6, 21);
+            this.nudWindowSize.Name = "nudWindowSize";
+            this.nudWindowSize.Size = new System.Drawing.Size(182, 20);
+            this.nudWindowSize.TabIndex = 6;
+            // 
+            // nudNoiseIntens
+            // 
+            this.nudNoiseIntens.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudNoiseIntens.Location = new System.Drawing.Point(6, 98);
+            this.nudNoiseIntens.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudNoiseIntens.Name = "nudNoiseIntens";
+            this.nudNoiseIntens.Size = new System.Drawing.Size(182, 20);
+            this.nudNoiseIntens.TabIndex = 7;
+            this.nudNoiseIntens.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 75);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(105, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Intensywność szumu";
             // 
             // PictureView
             // 
@@ -378,10 +434,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCropBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCropLeft)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudWindowSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNoiseIntens)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,5 +473,9 @@
         private System.Windows.Forms.Button btnCrop;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnNoise;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown nudNoiseIntens;
+        private System.Windows.Forms.NumericUpDown nudWindowSize;
     }
 }
