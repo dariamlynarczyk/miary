@@ -79,9 +79,21 @@ namespace SampleDatabaseWalkthrough
 
         private void btnRotate_Click(object sender, EventArgs e)
         {
+            int shorterSide = Math.Min(Image.Width, Image.Height);
+
             double angle = (double)nudAngle.Value;            
-            Image = Image.Rotate(angle, new Gray(512), false);
+            var tempImage = Image.Rotate(angle, new Gray(512), false);
             
+            double radians = Math.PI * angle / 180.0;
+
+            int newHeight = (int)(Math.Sqrt(Math.Pow(shorterSide, 2) / (Math.Pow(Math.Tan(radians), 2) + 1)));
+            int newWidth = (int)(Math.Sqrt(Math.Pow(shorterSide, 2) * Math.Pow(Math.Tan(radians), 2) / (Math.Pow(Math.Tan(radians), 2) + 1)));
+
+            int x = (tempImage.Width / 2) - (newWidth / 2);
+            int y = (tempImage.Height / 2) - (newHeight / 2);
+
+            Rectangle rect = new Rectangle(x, y, newWidth, newHeight);
+            Image = tempImage.Copy(rect);
         }
 
         private void btnScale_Click(object sender, EventArgs e)
