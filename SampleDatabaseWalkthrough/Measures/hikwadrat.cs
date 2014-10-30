@@ -24,7 +24,11 @@ namespace SampleDatabaseWalkthrough.Measures
             {
                 for (int y = 0; y < height; y++)
                 {
-                    double sqrDiff = Math.Pow(left[x, y] - right[x, y], 2) / (left[x, y] + right[x, y]);
+                    // To zabezpiecza przed dzieleniem przez 0
+                    double leftPixel = left[x, y] + 1;
+                    double rightPixel = right[x, y] + 1;
+
+                    double sqrDiff = Math.Pow(leftPixel - rightPixel, 2) / (leftPixel + rightPixel);
                     sum += sqrDiff;
                 }
             }
