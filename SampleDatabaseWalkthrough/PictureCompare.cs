@@ -34,11 +34,14 @@ namespace SampleDatabaseWalkthrough
         {
             using (var ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Pliki DICOM|*.dcm|JPG|*.jgp,*jgep|PNG|*.png|TIFF|*.tif|BMP|*.bmp";
+                ofd.Filter = "Pliki DICOM|*.dcm|JPG|*.jpg;*.jpeg;|PNG|*.png|TIFF|*.tif|BMP|*.bmp";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    pictureView1.Image = new Image<Gray,double>(ofd.FileName);
-                    pictureView1.Image = ConvertHelper.Read(ofd.FileName);
+                    // to dla jpeg, bmp, i innych
+                    pictureView1.Image = new Image<Gray, byte>(ofd.FileName).Convert<Gray, double>(); 
+
+                    // to dla DICOM
+                    //pictureView1.Image = ConvertHelper.Read(ofd.FileName);
                 }
             }
         }
@@ -47,10 +50,14 @@ namespace SampleDatabaseWalkthrough
         {
             using (var ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Pliki DICOM|*.dcm";
+                ofd.Filter = "Pliki DICOM|*.dcm|JPG|*.jgp;*.jpeg|PNG|*.png|TIFF|*.tif|BMP|*.bmp";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    pictureView2.Image = ConvertHelper.Read(ofd.FileName);
+                    // to dla jpeg, bmp, i innych
+                    pictureView2.Image = new Image<Gray, byte>(ofd.FileName).Convert<Gray, double>();
+
+                    // to dla DICOM
+                    //pictureView2.Image = ConvertHelper.Read(ofd.FileName);
                 }
             }
         }
