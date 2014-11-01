@@ -93,6 +93,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="gray.cs" />
     <Compile Include="Measures\CrossCorrelation.cs" />
     <Compile Include="Measures\HiKwadrat.cs" />
     <Compile Include="Measures\IMeasure.cs" />

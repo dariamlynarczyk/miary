@@ -30,8 +30,6 @@ namespace SampleDatabaseWalkthrough.Measures
 
             sum = sum / (width * height);
 
-            // suma może przyjmować wartości od 0 do 256*256 
-            // nie wiem czy nie lepiej byłoby zastosować inne przekształcenie niż liniowe ale niech będzie
             return sum / 256;
         }
     }

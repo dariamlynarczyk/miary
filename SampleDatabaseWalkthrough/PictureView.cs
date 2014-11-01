@@ -90,6 +90,10 @@ namespace SampleDatabaseWalkthrough
             }
             else
             {
+                Image = tempImage;
+            }
+           /* else
+            {
                 angle = angle % 45;
                 double radians = Math.PI * angle / 180.0;
 
@@ -101,7 +105,7 @@ namespace SampleDatabaseWalkthrough
 
                 Rectangle rect = new Rectangle(x, y, newWidth, newHeight);
                 Image = tempImage.Copy(rect);
-            }
+            }*/
         }
 
         private void btnScale_Click(object sender, EventArgs e)

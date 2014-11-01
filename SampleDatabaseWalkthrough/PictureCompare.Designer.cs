@@ -129,7 +129,7 @@
             this.btnOpenFile1.Name = "btnOpenFile1";
             this.btnOpenFile1.Size = new System.Drawing.Size(197, 23);
             this.btnOpenFile1.TabIndex = 4;
-            this.btnOpenFile1.Text = "Otwórz";
+            this.btnOpenFile1.Text = "Z pliku";
             this.btnOpenFile1.UseVisualStyleBackColor = true;
             this.btnOpenFile1.Click += new System.EventHandler(this.btnOpenFile1_Click);
             // 

@@ -34,9 +34,10 @@ namespace SampleDatabaseWalkthrough
         {
             using (var ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Pliki DICOM|*.dcm";
+                ofd.Filter = "Pliki DICOM|*.dcm|JPG|*.jgp,*jgep|PNG|*.png|TIFF|*.tif|BMP|*.bmp";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
+                    pictureView1.Image = new Image<Gray,double>(ofd.FileName);
                     pictureView1.Image = ConvertHelper.Read(ofd.FileName);
                 }
             }
